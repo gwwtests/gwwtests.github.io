@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Player with Transcript</title>
+    <style>
+        .transcript {
+            font-family: monospace;
+        }
+        .transcript span {
+            cursor: pointer;
+        }
+        .played {
+            font-weight: bold;
+        }
+        .please-click-note {
+            font-size: larger;
+        }
+        .big-please-click {
+            font-size: larger;
+            font-weight: bold;
+        }
+  /* Styles for bigger screens */
+  @media screen and (min-width: 768px) {
+    video.screencast-class {
+      width: 33%;
+      height: 33%;
+    }
+  }
+  
+  /* Styles for medium screens */
+  @media screen and (min-width: 500px) and (max-width: 767px) {
+    video.screencast-class {
+      width: 50%;
+      height: 50%;
+    }
+  }
+
+  /* Styles for smaller screens */
+  @media screen and (max-width: 499px) {
+    video.screencast-class {
+      width: 65%;
+      height: 65%;
+    }
+  }
+    </style>
+</head>
+<body>
+    <audio id="audio" controls>
+        <!-- <source src="test04.wav" type="audio/wav"> -->
+        <!-- <source src="test04.mp3" type="audio/wav"> -->
+        <source src="test04.ogg" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio>
+
+    <hr/>
+
+    <p class="please-click-note">
+When playing above speech🗣️ 💬recording🎙️<br/>
+Please try <span class="big-please-click">clicking🖱️👆</span> on text 📜 below!<br/>
+Also try seeking to different parts of recording🎤.
+    </p>
+
+    <hr/>
+
+    <div class="transcript" id="transcript"></div>
+    <script>
+        const audio = document.getElementById('audio');
+        const transcriptDiv = document.getElementById('transcript');
+
+        async function fetchTranscript(url) {
+            const response = await fetch(url);
+            const data = await response.text();
+            return data;
+        }
+
+        function parseCues(data) {
+            const regex = /(\d{2}:\d{2}:\d{2}\.\d{3}) --> (\d{2}:\d{2}:\d{2}\.\d{3})\r?\n([^\r\n]+)/g;
+            let match;
+            const cues = [];
+            while (match = regex.exec(data)) {
+                cues.push({
+                    startTime: match[1],
+                    endTime: match[2],
+                    text: match[3]
+                });
+            }
+            return cues;
+        }
+
+/*
+        function displayTranscript(cues) {
+            cues.forEach(cue => {
+                const span = document.createElement('span');
+                span.dataset.startTime = cue.startTime;
+                span.innerText = cue.text + ' ';
+                span.onclick = function() {
+                    audio.currentTime = timeStringToSeconds(this.dataset.startTime);
+                };
+                transcriptDiv.appendChild(span);
+            });
+        }
+*/
+function displayTranscript(cues) {
+    cues.forEach(cue => {
+        const span = document.createElement('span');
+        span.dataset.startTime = cue.startTime;
+
+        // Split the text by <br/> and create a new line for each part
+        const parts = cue.text.split('<br/>');
+        parts.forEach((part, index) => {
+            if (index > 0) {
+                const br = document.createElement('br');
+                span.appendChild(br);
+            }
+            const textNode = document.createTextNode(part + ' ');
+            span.appendChild(textNode);
+        });
+
+        span.onclick = function() {
+            audio.currentTime = timeStringToSeconds(this.dataset.startTime);
+        };
+        transcriptDiv.appendChild(span);
+    });
+}
+
+
+        function timeStringToSeconds(timeString) {
+            const [hours, minutes, seconds] = timeString.split(':');
+            return parseFloat(hours) * 3600 + parseFloat(minutes) * 60 + parseFloat(seconds);
+        }
+
+        function updateTranscript(currentTime) {
+            const spans = transcriptDiv.querySelectorAll('span');
+            spans.forEach(span => {
+                const startTime = timeStringToSeconds(span.dataset.startTime);
+                if (currentTime >= startTime) {
+                    span.classList.add('played');
+                } else {
+                    span.classList.remove('played');
+                }
+            });
+        }
+
+        audio.addEventListener('timeupdate', () => {
+            updateTranscript(audio.currentTime);
+        });
+
+        (async function() {
+            //const transcriptPath = 'test04.wav.vtt';
+            //const transcriptData = await fetchTranscript(transcriptPath);
+            const transcriptData = `
+WEBVTT
+
+00:00:00.000 --> 00:00:00.000
+
+
+00:00:00.000 --> 00:00:01.010
+ Okay,
+
+00:00:01.010 --> 00:00:01.320
+ this
+
+00:00:01.320 --> 00:00:01.650
+ is
+
+00:00:01.650 --> 00:00:02.340
+ test
+
+00:00:02.340 --> 00:00:03.300
+ number
+
+00:00:03.300 --> 00:00:03.990
+ four.<br/><br/>
+
+00:00:03.990 --> 00:00:05.050
+ Let
+
+00:00:05.050 --> 00:00:05.780
+'s
+
+00:00:05.780 --> 00:00:06.660
+ record
+
+00:00:06.660 --> 00:00:07.940
+ something
+
+00:00:07.940 --> 00:00:09.690
+ longer
+
+00:00:09.690 --> 00:00:09.840
+ here...<br/>
+
+00:00:09.840 --> 00:00:09.860
+ I
+
+00:00:09.860 --> 00:00:10.200
+ have
+
+00:00:10.200 --> 00:00:10.560
+ an
+
+00:00:10.560 --> 00:00:11.490
+ ⏳hourglass
+
+00:00:11.490 --> 00:00:11.880
+ in
+
+00:00:11.880 --> 00:00:12.120
+ my
+
+00:00:12.120 --> 00:00:12.600
+ ✋hand...<br/>
+
+00:00:12.600 --> 00:00:12.720
+ I
+
+00:00:12.720 --> 00:00:13.600
+ really
+
+00:00:13.600 --> 00:00:13.920
+ like
+
+00:00:13.920 --> 00:00:15.320
+ ⏳hourglasses...
+
+00:00:15.320 --> 00:00:16.280
+ especially
+
+00:00:16.280 --> 00:00:16.440
+ this
+
+00:00:16.440 --> 00:00:16.760
+ one
+
+00:00:16.760 --> 00:00:17.220
+ with
+
+00:00:17.220 --> 00:00:17.810
+ 🧲magnetic
+
+00:00:17.810 --> 00:00:18.190
+ sand(!)
+
+00:00:18.190 --> 00:00:18.340
+ it
+
+00:00:18.340 --> 00:00:18.710
+ makes
+
+00:00:18.710 --> 00:00:19.470
+ beautiful🌈
+
+00:00:19.470 --> 00:00:19.970
+ patterns,
+
+00:00:19.970 --> 00:00:20.300
+ when
+
+00:00:20.300 --> 00:00:20.790
+ magnet
+
+00:00:20.790 --> 00:00:21.010
+ is
+
+00:00:21.010 --> 00:00:22.080
+ underneath
+
+00:00:22.080 --> 00:00:23.360
+ and
+
+00:00:23.360 --> 00:00:23.360
+
+
+00:00:23.360 --> 00:00:23.860
+ now
+
+00:00:23.860 --> 00:00:24.160
+ I
+
+00:00:24.160 --> 00:00:24.350
+ am
+
+00:00:24.350 --> 00:00:25.340
+ trying...
+
+00:00:25.340 --> 00:00:25.850
+ you
+
+00:00:25.850 --> 00:00:26.520
+ know...
+
+00:00:26.520 --> 00:00:26.800
+ to
+
+00:00:26.800 --> 00:00:27.350
+ see
+
+00:00:27.350 --> 00:00:27.850
+ how
+
+00:00:27.850 --> 00:00:28.280
+ it
+
+00:00:28.280 --> 00:00:29.530
+ operates,
+
+00:00:29.530 --> 00:00:30.190
+ when
+
+00:00:30.190 --> 00:00:30.840
+ it's
+
+00:00:30.840 --> 00:00:31.180
+ on
+
+00:00:31.180 --> 00:00:31.760
+ the
+
+00:00:31.760 --> 00:00:32.280
+ angle
+
+00:00:32.280 --> 00:00:32.760
+ and
+
+00:00:32.760 --> 00:00:33.240
+ how
+
+00:00:33.240 --> 00:00:33.540
+ the
+
+00:00:33.540 --> 00:00:33.990
+ sand
+
+00:00:33.990 --> 00:00:34.180
+ is
+
+00:00:34.180 --> 00:00:34.560
+ like
+
+00:00:34.560 --> 00:00:35.220
+ flowing
+
+00:00:35.220 --> 00:00:35.410
+ in
+
+00:00:35.410 --> 00:00:35.790
+ this
+
+00:00:35.790 --> 00:00:36.540
+ magnetic
+
+00:00:36.540 --> 00:00:37.040
+ field
+
+00:00:37.040 --> 00:00:37.220
+ and
+
+00:00:37.220 --> 00:00:37.700
+ creating
+
+00:00:37.700 --> 00:00:38.280
+ beautiful
+
+00:00:38.280 --> 00:00:39.400
+ patterns
+
+00:00:39.400 --> 00:00:39.960
+ such
+
+00:00:39.960 --> 00:00:40.180
+ a
+
+00:00:40.180 --> 00:00:40.660
+ nice
+
+00:00:40.660 --> 00:00:41.090
+ joy
+
+00:00:41.090 --> 00:00:41.560
+ and
+
+00:00:41.560 --> 00:00:41.920
+ fun
+
+00:00:41.920 --> 00:00:42.220
+ to
+
+00:00:42.220 --> 00:00:42.900
+ watch
+
+00:00:42.900 --> 00:00:43.320
+ and
+
+00:00:43.320 --> 00:00:43.650
+ to
+
+00:00:43.650 --> 00:00:44.070
+ play
+
+00:00:44.070 --> 00:00:44.500
+ with
+
+00:00:44.500 --> 00:00:44.730
+ it.<br/>
+
+00:00:44.730 --> 00:00:45.440
+ Especially
+
+00:00:45.440 --> 00:00:45.520
+ in
+
+00:00:45.520 --> 00:00:45.520
+
+
+00:00:45.520 --> 00:00:46.660
+ breaks
+
+00:00:46.660 --> 00:00:47.660
+ from
+
+00:00:47.660 --> 00:00:48.290
+ work...<br/>
+
+00:00:48.290 --> 00:00:48.680
+ to
+
+00:00:48.680 --> 00:00:49.670
+ enjoy,<br/>
+
+00:00:49.670 --> 00:00:50.060
+ to
+
+00:00:50.060 --> 00:00:51.630
+ recharge,<br/>
+
+00:00:51.630 --> 00:00:52.080
+ to
+
+00:00:52.080 --> 00:00:52.830
+ slow
+
+00:00:52.830 --> 00:00:53.660
+ down,<br/>
+
+00:00:53.660 --> 00:00:54.200
+ but
+
+00:00:54.200 --> 00:00:54.280
+ at
+
+00:00:54.280 --> 00:00:54.360
+ the
+
+00:00:54.360 --> 00:00:54.600
+ same
+
+00:00:54.600 --> 00:00:54.840
+ time
+
+00:00:54.840 --> 00:00:55.080
+ have
+
+00:00:55.080 --> 00:00:55.120
+ a
+
+00:00:55.120 --> 00:00:55.430
+ bit
+
+00:00:55.430 --> 00:00:55.850
+ more
+
+00:00:55.850 --> 00:00:56.370
+ sense
+
+00:00:56.370 --> 00:00:56.580
+ of
+
+00:00:56.580 --> 00:00:57.290
+ time<br/>
+
+00:00:57.290 --> 00:00:57.420
+ also
+
+00:00:57.420 --> 00:00:57.630
+ to
+
+00:00:57.630 --> 00:00:58.580
+ appreciate
+
+00:00:58.580 --> 00:00:59.140
+ how
+
+00:00:59.140 --> 00:00:59.410
+ much
+
+00:00:59.410 --> 00:00:59.720
+ joy
+
+00:00:59.720 --> 00:01:00.080
+ can
+
+00:01:00.080 --> 00:01:00.320
+ give
+
+00:01:00.320 --> 00:01:01.240
+ this
+
+00:01:01.240 --> 00:01:02.040
+ one
+
+00:01:02.040 --> 00:01:02.120
+ to
+
+00:01:02.120 --> 00:01:02.650
+ two
+
+00:01:02.650 --> 00:01:03.180
+ and
+
+00:01:03.180 --> 00:01:03.350
+ a
+
+00:01:03.350 --> 00:01:04.030
+ half
+
+00:01:04.030 --> 00:01:05.300
+ minutes
+
+00:01:05.300 --> 00:01:05.890
+ how
+
+00:01:05.890 --> 00:01:06.540
+ much
+
+00:01:06.540 --> 00:01:06.890
+ it
+
+00:01:06.890 --> 00:01:07.410
+ can
+
+00:01:07.410 --> 00:01:07.840
+ be...<br/>
+
+00:01:07.840 --> 00:01:08.740
+ because
+
+00:01:08.740 --> 00:01:09.020
+ this
+
+00:01:09.020 --> 00:01:09.360
+ how
+
+00:01:09.360 --> 00:01:09.720
+ long
+
+00:01:09.720 --> 00:01:10.060
+ it
+
+00:01:10.060 --> 00:01:10.240
+ takes
+
+00:01:10.240 --> 00:01:10.240
+
+
+00:01:10.240 --> 00:01:10.700
+ for
+
+00:01:10.700 --> 00:01:11.310
+ this
+
+00:01:11.310 --> 00:01:12.090
+ small
+
+00:01:12.090 --> 00:01:12.940
+ hour
+
+00:01:12.940 --> 00:01:13.480
+glass
+
+00:01:13.480 --> 00:01:13.770
+ to
+
+00:01:13.770 --> 00:01:14.070
+ go
+
+00:01:14.070 --> 00:01:15.160
+ through
+
+00:01:15.160 --> 00:01:15.620
+ the
+
+00:01:15.620 --> 00:01:16.280
+ sand...
+            `;
+            const cues = parseCues(transcriptData);
+            displayTranscript(cues);
+        })();
+    </script>
+
+    <br/>
+    <hr/>
+    <br/>
+
+    <p>
+    Hopefully it will work like in screencast below, illustrating results of clicking around:<br/>
+<video class="screencast-class" controls>
+  <source src="test04_punct.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+</p>
+    <hr/>
+    <p>
+    Here is how (using Linux): audio was recorded, done speech-to-text locally (produced .vtt file), so later produced audio and vtt can be easily integrated into code of this site.
+</p>
+
+    <p>
+STT used was <a href="https://github.com/ggerganov/whisper.cpp">Whisper.cpp by Ggerganov</a> (with <a href="https://aur.archlinux.org/packages/whisper.cpp-model-large">model large AUR package</a> and installed with <a href="https://aur.archlinux.org/packages/whisper-git">whisper-git AUR pakcage</a> ).
+</p>
+
+<p>
+<code><pre>
+# Step 1: Recoding.
+# recording audio in 16hHz for whisper.cpp
+#
+# # If you want to specify used hardware:
+# arecord -D hw:X,Y -f S16_LE -c1 -r16 -t wav "$1"
+# # Use to get list of devices for `hw:X,Y`
+# arecord -l
+#
+# Let's skip `-D hw:X,Y` device parameter and go with defaults:
+
+arecord -f S16_LE -c1 -r16 -t wav "$1"
+
+# Step 2: STT. 
+# Run whisper with multiple output files (we care about VTT for this html+js page)
+time whisper.cpp-large -otxt -ovtt -osrt -ocsv -ml 1 "testXX.wav"
+
+# -otxt -ovtt -osrt -ocsv enable creation of output files
+# -ml 1 restricts line to n characters. with such small limit
+#       it basically splits timestamps word, by word.
+
+# Step 3(optional): 
+# To make audio smaller, you may like to convert o `.ogg`:
+oggenc -q 3 testXX.wav -o testXX.ogg
+
+# Step 4: Update html file!
+# Now you copy copy .vtt into code of this page
+# (it is self contained html+js+css in one file!)
+# and change audio tag to point
+# to your new wav file and you are good!
+
+</pre></code>
+</p>
+<p>
+And screencast was made with <a href="https://github.com/vkohaupt/vokoscreenNG">vokoscreenNG</a> (there is <a href="https://archlinux.org/packages/community/x86_64/vokoscreen/">vokoscreen Arch community package</a> )
+</p>
+
+<!-- Thank you GPT4 for helping with those scripts! -->
+</body>
+</html>
+
