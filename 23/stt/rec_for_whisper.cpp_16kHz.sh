@@ -7,4 +7,4 @@
 
 set -x
 # let's try without -D hw:X,Y
-arecord -f S16_LE -c1 -r16 -t wav "$1"
+arecord -f S16_LE -c1 -r16000 -t wav "$1"
