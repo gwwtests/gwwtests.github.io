@@ -623,16 +623,16 @@ STT used was <a href="https://github.com/ggerganov/whisper.cpp">Whisper.cpp by G
 <p>
 <code><pre>
 # Step 1: Recoding.
-# recording audio in 16hHz for whisper.cpp
+# recording audio in 16kHz for whisper.cpp
 #
 # # If you want to specify used hardware:
-# arecord -D hw:X,Y -f S16_LE -c1 -r16 -t wav "$1"
+# arecord -D hw:X,Y -f S16_LE -c1 -r16000 -t wav "$1"
 # # Use to get list of devices for `hw:X,Y`
 # arecord -l
 #
 # Let's skip `-D hw:X,Y` device parameter and go with defaults:
 
-arecord -f S16_LE -c1 -r16 -t wav "$1"
+arecord -f S16_LE -c1 -r16000 -t wav "$1"
 
 # Step 2: STT. 
 # Run whisper with multiple output files (we care about VTT for this html+js page)
