@@ -1,0 +1,1626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>
+		  The details and summary elements | HTML5 Doctor    </title>
+    <link rel="stylesheet" href="http://html5doctor.com/wp-content/themes/html5doctor2/style.css" media="screen" />
+    <!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="HTML5 Doctor &raquo; Feed" href="http://html5doctor.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="HTML5 Doctor &raquo; Comments Feed" href="http://html5doctor.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="HTML5 Doctor &raquo; The details and summary elements Comments Feed" href="http://html5doctor.com/the-details-and-summary-elements/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/html5doctor.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.7.13"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),!(j.toDataURL().length<3e3)&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,65039,8205,55356,57096),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,55356,57096),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55357,56425,55356,57341,8205,55357,56507),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55357,56425,55356,57341,55357,56507),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='contact-form-7-css'  href='http://html5doctor.com/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=3.5.3' type='text/css' media='all' />
+<link rel='stylesheet' id='crp_list_style-css'  href='http://html5doctor.com/wp-content/plugins/contextual-related-posts/css/default-style.css?ver=4.7.13' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-pagenavi-css'  href='http://html5doctor.com/wp-content/plugins/wp-pagenavi/pagenavi-css.css?ver=2.70' type='text/css' media='all' />
+<script type='text/javascript' src='http://html5doctor.com/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='http://html5doctor.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<link rel='https://api.w.org/' href='http://html5doctor.com/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://html5doctor.com/xmlrpc.php?rsd" />
+<link rel='prev' title='Avoiding common HTML5 mistakes' href='http://html5doctor.com/avoiding-common-html5-mistakes/' />
+<link rel='next' title='Storing Data the Simple HTML5 Way (and a few tricks you might not have known)' href='http://html5doctor.com/storing-data-the-simple-html5-way-and-a-few-tricks-you-might-not-have-known/' />
+<link rel="canonical" href="http://html5doctor.com/the-details-and-summary-elements/" />
+<link rel='shortlink' href='http://html5doctor.com/?p=3558' />
+<link rel="alternate" type="application/json+oembed" href="http://html5doctor.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fhtml5doctor.com%2Fthe-details-and-summary-elements%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://html5doctor.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fhtml5doctor.com%2Fthe-details-and-summary-elements%2F&#038;format=xml" />
+		<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+		
+	  
+  
+	</head>
+<body class="post-template-default single single-post postid-3558 single-format-standard" id="com-html5doctor">
+<header role="banner">
+    <div class="inner group">
+    <a href="http://html5doctor.com" rel="home"><div>
+        <div class="logo">
+        <h1>HTML5 Doctor</h1>
+        <h2>Helping you implement HTML5 today</h2>
+        </div><!-- end logo -->
+    </div></a><!-- wrapper div for Firefox 3.x ref: http://01i.jp/html5bll -->
+
+ 	<ul id="menu-top-nav" class="semantic-list"><li id="menu-item-3272" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-3272"><a href="http://html5doctor.com/about/">About</a></li>
+<li id="menu-item-3275" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3275"><a href="http://feeds2.feedburner.com/html5doctor">RSS</a></li>
+<li id="menu-item-3276" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3276"><a href="http://feeds.feedburner.com/HTML5DoctorComments">Comments RSS</a></li>
+<li id="menu-item-3253" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-3253"><a href="#">Doctor Network</a>
+<ul class="sub-menu">
+	<li id="menu-item-3273" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3273"><a href="http://html5gallery.com">HTML5 Gallery</a></li>
+	<li id="menu-item-3580" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3580"><a href="http://docteurhtml5.com/html5/">Docteur HTML5</a></li>
+	<li id="menu-item-3973" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3973"><a href="https://github.com/html5doctor/">HTML5 Doctor on Github</a></li>
+</ul>
+</li>
+</ul>      <!-- end #top-nav -->
+    
+    <nav>
+		<ul id="menu-main_nav" class=""><li id="menu-item-3297" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3297"><a href="/">Home</a></li>
+<li id="menu-item-3250" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3250"><a href="http://html5doctor.com/article-archive/">Article Archive</a></li>
+<li id="menu-item-3291" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3291"><a href="http://html5doctor.com/element-index/">Element Index</a></li>
+<li id="menu-item-3968" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3968"><a href="http://html5doctor.com/resources/">Resources</a></li>
+</ul>    	<!-- end ul -->
+    	<ul>
+    		<li><form id="search-form" action="/search/" role="search"  method="get">
+    <div>
+    <input type="text" name="q" value="" />
+    <input type="submit" id="search-button" value="Search" />
+    </div>
+</form>
+</li>
+    	</ul>
+    	<!-- end ul -->	
+    </nav>
+    <!-- end nav -->
+	</div>
+	<!-- end .inner -->
+</header>
+<!-- end header -->
+<main id="content" class="group" role="main">
+    <div class="main">
+        <article class="post group">
+            <header class="post-3558 post type-post status-publish format-standard hentry category-elements tag-details tag-html-5 tag-html5 tag-summary" id="post-3558">
+                 <h1>The details and summary elements </h1>
+                <small><time datetime="2011-08-09" pubdate>Tuesday, August 9th, 2011</time> by <a href="http://html5doctor.com/author/toml/" title="Posts by Tom Leadbetter" rel="author">Tom Leadbetter</a>.</small>
+                <p class="tweet"><a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="html5doctor">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></p>
+            </header>
+            <!-- end header -->
+             <ul class="commentlist">
+                        </ul>
+           
+            <div class="entry">
+
+		
+                How often have you had to write some JavaScript to create an interactive widget that shows and hides some content? You might’ve even downloaded a whole JavaScript library to achieve such an effect. Well, it’s time <a href="http://edu-review.com/" title="writing service">writing service</a> to rejoice! HTML5 provides a way to create this toggle feature with just a few lines of HTML and no JavaScript in sight (depending on the browser, of course, but we’ll come to that later). And so we introduce to you the <code>&lt;details&gt;</code> element.
+
+Here is what <a href="http://www.w3.org/html/wg/drafts/html/master/">the spec</a> has to say about <code>&lt;details&gt;</code>:
+<blockquote>The <code>details</code> element represents a disclosure widget from which the user can obtain additional information or controls.
+
+<footer>— <cite><a href="http://www.w3.org/html/wg/drafts/html/master/interactive-elements.html#the-details-element">W3C HTML specification</a></cite></footer></blockquote>
+Essentially, we can use <code>&lt;details&gt;</code> to create an accordion-like widget that the user can toggle open and closed. Inside <code>&lt;details&gt;</code>, we can put any sort of content we want.
+<h2 id="browser-support">Browser support</h2>
+Before we go any further, you should know that currently, only Chrome supports the <code>&lt;details&gt;</code> element. <a href="http://my.opera.com/ODIN/blog/implementing-html5-details">Opera will support it soon</a>, but in the meantime we’ll have to use some <a href="#fallbacks">polyfills</a>. So fire up Chrome and let’s take a peek.
+<h2 id="how-to-use">Using <code>&lt;details&gt;</code></h2>
+There are two relevant elements here: <code>&lt;details&gt;</code> and, optionally, <code>&lt;summary&gt;</code>. <code>&lt;details&gt;</code> is the wrapper for all the content we want to show and hide, and <code>&lt;summary&gt;</code> contains the — well, the summary and title of the section. Technically we don&#8217;t need the <code>&lt;summary&gt;</code>. If absent, the browser will use some default text (in Chrome: “details”). Let’s have a look at some markup:
+<pre><code>&lt;details&gt;
+  &lt;summary&gt;Show/Hide me&lt;/summary&gt;
+  &lt;p&gt;Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.&lt;/p&gt;
+&lt;/details&gt;</code></pre>
+You can <a href="http://jsbin.com/egefop#html,live">see this in action over at jsbin</a>. It’s a simple example, but it shows off the toggle effect nicely. All this without JavaScript!
+<h3>The <code>open</code> attribute</h3>
+In the example above, the content is hidden when the page loads. We can make it visible by default by adding the boolean <code>open</code> attribute to the <code>&lt;details&gt;</code> element (<a href="http://jsbin.com/egefop/2#html,live">jsbin example</a>):
+<pre><code>&lt;details open&gt;
+  &lt;summary&gt;Show/Hide me&lt;/summary&gt;
+  &lt;p&gt;Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.&lt;/p&gt;
+&lt;/details&gt;</code></pre>
+There is no <code>closed</code> attribute. It’s the default, so by omitting <code>open</code>, you imply <code>closed</code>.
+<h3>The <code>&lt;summary&gt;</code> element</h3>
+We&#8217;ve briefly seen <code>&lt;summary&gt;</code> in action. Since it is phrasing content, we can use inline elements such as <code>&lt;span&gt;</code> or <code>&lt;strong&gt;</code> inside it. Why thought would we do this? Perhaps for an extra styling hook or as the spec suggests: a label for a form element. At least it <em>would</em> be handy if it worked properly <a href="http://jsbin.com/egefop/3#html">when implemented</a>:
+<pre><code>&lt;details&gt;
+  &lt;summary&gt;&lt;label for="name"&gt;Name:&lt;/label&gt;&lt;/summary&gt;
+  &lt;input type="text" id="name" name="name" /&gt;
+&lt;/details&gt;</code></pre>
+Normally, clicking anywhere on the summary reveals the content of the <code>&lt;details&gt;</code> element. But in this example, clicking the summary doesn’t reveal the content because you’re actually clicking the <code>&lt;label&gt;</code>, which then focuses the <code>&lt;input&gt;</code> element — even though it’s hidden by the collapsed <code>&lt;details&gt;</code> element.
+
+Clearly this needs addressing, what do you think should happen? Maybe any browser vendors reading this can take a look :)
+<h3>Nesting multiple <code>&lt;details&gt;</code> elements</h3>
+You can nest <code>&lt;details&gt;</code> within <code>&lt;details&gt;</code> if you like, <a href="http://jsbin.com/egefop/14#html,live">as seen in this perfectly valid example</a>:
+<pre><code>&lt;details&gt;
+  &lt;summary&gt;Question 1&lt;/summary&gt;
+  &lt;p&gt;&lt;strong&gt;Pellentesque habitant morbi tristique&lt;/strong&gt; senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. &lt;em&gt;Aenean ultricies mi vitae est.&lt;/em&gt; Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, &lt;code&gt;commodo vitae&lt;/code&gt;, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. &lt;a href="#"&gt;Donec non enim&lt;/a&gt; in turpis pulvinar facilisis. Ut felis.&lt;/p&gt;
+  &lt;details&gt;
+    &lt;summary&gt;Related documents&lt;/summary&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Lorem ipsum dolor sit amet,  consectetuer adipiscing elit.&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Aliquam tincidunt mauris eu  risus.&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Lorem ipsum dolor sit amet,  consectetuer adipiscing elit.&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Aliquam tincidunt mauris eu  risus.&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/details&gt;
+&lt;/details&gt;</code></pre>
+<h2 id="examples">Example uses</h2>
+So when could you use <code>&lt;details&gt;</code>? FAQs immediately spring to mind. People often use accordions for FAQs anyway, so they’re a great candidate for <code>&lt;details&gt;</code>.
+
+Also consider a table of contents. It could be a fixed area that scrolls with the content. <a href="http://jsbin.com/egefop/8#html,live">Something like this perhaps?</a>
+
+You could use <code>&lt;details&gt;</code> to toggle the comments section of a blog, member profiles, details of a download, complex forms, or in web applications as shown in this example from the spec:
+
+<figure><img src="http://html5doctor.com/wp-content/uploads/2011/08/details-w3c.jpg" alt="" /><figcaption>An example of the <code>&lt;details&gt;</code> element from the spec</figcaption></figure>In fact, just looking around WordPress as I write, I see plenty of opportunities to use <code>&lt;details&gt;</code>. Let us know your thoughts and ideas in the comments.
+<h2 id="styling">Styling</h2>
+How can we style this thing? Well, to style the disclosure widget itself in WebKit, you can apply some CSS to the pseudo-class <code>::-webkit-details-marker</code>. You can <a href="http://jsbin.com/egefop/9#html,live">see a little demo here</a>:
+<pre><code>details summary<strong>::-webkit-details-marker</strong> {
+  background: red;
+  color: #fff;
+  font-size: 500%;
+}</code></pre>
+We can also position the disclosure widget (to an extent). <a href="http://jsbin.com/egefop/17#html,live">Here it is floated right</a>. That’s about all we have initially.
+
+So how do we replace the disclosure widget with a custom icon? Using an attribute selector, you can detect whether the <code>&lt;details&gt;</code> element is open or closed and apply an appropriate background image. We do something similar in <a href="http://jsbin.com/egefop/11#html,live">this example</a>, except that instead of using a background image, we use the <code>:after</code> pseudo-element:
+<pre><code>summary::-webkit-details-marker {
+  display: none
+}
+summary:after {
+  background: red; 
+  border-radius: 5px; 
+  content: "+"; 
+  color: #fff; 
+  float: left; 
+  font-size: 1.5em; 
+  font-weight: bold; 
+  margin: -5px 10px 0 0; 
+  padding: 0; 
+  text-align: center; 
+  width: 20px;
+}
+details[open] summary:after {
+  content: "-";
+}</code></pre>
+The above example uses literal “+” and “-” characters as the disclosure widget. Depending on your styling, you might need to use <code>:before</code> instead of <code>:after</code>, but both pseudo-elements allow using an image.
+
+The <code>details[open]</code> attribute selector creates some interesting possibilities. And because we’re nice doctors, here’s a more <a href="http://jsbin.com/egefop/15#html,live">polished example</a> as seen in the screenshot below:
+
+<figure><img src="http://html5doctor.com/wp-content/uploads/2011/08/nice-details.jpg" alt="Details element in Chrome" /><figcaption>Styled <code>&lt;details&gt;</code> element in Chrome</figcaption></figure>It would be interesting (though not necessarily good design) if you could use CSS transitions to animate the <code>&lt;details&gt;</code> opening and closing, but we can’t just yet.
+<h2 id="accessibility">Accessibility</h2>
+Unfortunately, at the time of writing, <code>&lt;details&gt;</code> is not accessible via the keyboard. <a href="http://www.paciellogroup.com/blog/2011/08/accessibility-notes-2nd-august-2011/">Steve Faulkner writes</a>:
+<blockquote>Bottom line is, currently no keyboard support and no usable information exposed to assistive technology.</blockquote>
+Try it yourself. If you open a <code>&lt;details&gt;</code> element with your mouse, you can then keyboard through the content, but you should also be able to toggle the details open and shut with the keyboard. So it’s not ideal, but I’m sure the Chrome developers will sort this out soon (won’t you guys?).
+<h2 id="fallbacks">Fallbacks</h2>
+Before anyone exclaims that it doesn’t work in IE6, we know. Thanks to some clever people, we can provide elegant fallbacks though. As listed in this <a href="https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-browser-Polyfills">very handy collection of cross-browser polyfills</a>, here are two fallbacks, both of which require jQuery:
+<ul>
+	<li><a href="http://mathiasbynens.be/notes/html5-details-jquery"><code>&lt;details&gt;</code> fallback via jQuery</a> by Mathias Bynens</li>
+	<li><a href="https://github.com/manuelbieh/details-Polyfill">Another <code>&lt;details&gt;</code> alternative, also based on jQuery</a> by Manuel Bieh</li>
+</ul>
+<del>Many of you will be using Modernizr for feature detection, but Modernizr currently doesn’t check for details support. As detailed in the above fallback by Mathias, we can use the following JavaScript:</del>
+<pre><code><del>&lt;script&gt;
+  if (!('open' in document.createElement('details'))) {
+    alert("No details");
+  }
+&lt;/script&gt;</del></code></pre>
+<ins>Update: Thanks to Mathias for the comment. The above code is not 100% reliable as if returns false in some versions of Chrome. Instead, consider using <a href="https://github.com/Modernizr/Modernizr/blob/master/feature-detects/elem/details.js">this Modernizr snippet</a>.</ins>
+<h2>Why this type of interaction?</h2>
+Not to look a gift horse in the mouth, but why is this widget in HTML5? Well, like so many other features of HTML5, creating these widgets is just easier with HTML5. Date pickers, sliders, progress indicators, and now accordions can be implemented easily and without JavaScript. Who knows what’s next? Native tabs would be nice :)
+<h2 id="summary">Summary</h2>
+In this article, we’ve demonstrated how to use the <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code> elements. <code>&lt;details&gt;</code> is a new element and uses the <code>&lt;summary&gt;</code> element to create an interactive disclosure widget natively in the browser.
+
+Currently, <code>&lt;details&gt;</code> only works in Chrome, but hopefully this will change sooner rather than later. There is only one specific CSS trick we can use — <code>::-webkit-details-marker</code> — but we can use plenty of other CSS to style it up. Let us know in the comments if you’ve got any experience or ideas about the <code>&lt;details&gt;</code> element.                        
+            </div>
+            <!-- end .entry -->
+            
+            <aside>
+                <ul class="semantic-list">
+                    <li class="category">
+                        <h3>Category</h3>
+                        <ul class="semantic-list"><li><a href="http://html5doctor.com/category/elements/" rel="category tag">Elements</a></li></ul>
+
+                    </li>
+                    <li class="tags">
+                        <ul class="semantic-list"><li><h3>Tags</h3></li><li><a href="http://html5doctor.com/tag/details/" rel="tag">details</a></li><li><a href="http://html5doctor.com/tag/html-5/" rel="tag">HTML 5</a></li><li><a href="http://html5doctor.com/tag/html5/" rel="tag">html5</a></li><li><a href="http://html5doctor.com/tag/summary/" rel="tag">summary</a></li></ul>                    </li>
+                </ul>
+
+					<h3>Translations</h3><ul class="trans semantic-list"><li><a href="http://www.maujor.com/blog/2011/08/10/elementos-details-e-summary-da-html5/">Português</a></li>
+<li><a href="http://varhi.com/?p=5191">中国</a></li></ul>		 
+            </aside>
+            <!-- end aside -->
+            
+            <aside id="author-bio">
+                <h4><a href="http://html5doctor.com/author/toml/" title="Posts by Tom Leadbetter" rel="author">Tom Leadbetter</a></h4>
+                <div class="author-blurb author">
+                    <p class="vcard">This article was written by <span class="fn"><a href="http://html5doctor.com/author/toml/" title="Posts by Tom Leadbetter" rel="author">Tom Leadbetter</a></span>. Tom is a designer/frontend web developer based in Liverpool, UK. He is football (soccer) mad, loves gaming and other geeky bits n bobs. Stalk him on <a href="http://www.twitter.com/leads">Twitter</a>.</p>
+                    <img alt='' src='http://2.gravatar.com/avatar/8588be90852cc86af8087e026ef36995?s=128&#038;d=mm&#038;r=g' srcset='http://2.gravatar.com/avatar/8588be90852cc86af8087e026ef36995?s=256&amp;d=mm&amp;r=g 2x' class='avatar avatar-128 photo' height='128' width='128' />                </div>
+            </aside>
+            <!-- end #author-bio -->
+            
+            <section id="comments">
+                
+<!-- You can start editing here. -->
+
+	<h3>59 Responses on the article “The details and summary elements”</h3>
+
+		<li class="comment even thread-even depth-1" id="comment-17068">
+				<div id="div-comment-17068" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://2.gravatar.com/avatar/24e08a9ea84deb17ae121074d0f17125?s=48&#038;d=mm&#038;r=g' srcset='http://2.gravatar.com/avatar/24e08a9ea84deb17ae121074d0f17125?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn"><a href='http://mathiasbynens.be/' rel='external nofollow' class='url'>Mathias Bynens</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-17068">
+			August 9, 2011 at 3:44 pm</a>		</div>
+
+		<p>To check for native <code>&lt;details&gt;</code> support you may want to use a more robust feature test. WebKit had implemented the IDL attributes (so <code>'open' in document.createElement('details') === true</code>) long before it actually supported <code>&lt;details&gt;</code>. Other browsers may have similar issues in the feature, resulting in false positives.</p>
+<p>For a more robust solution, see <a href="http://mathiasbynens.be/notes/html5-details-jquery#comment-35" rel="nofollow">my feature test for native  <code>&lt;details&gt;</code>/<code>&lt;summary&gt;</code> support.</a></p>
+<p>I forgot to mention that my feature test is <a href="https://github.com/Modernizr/Modernizr/blob/master/feature-detects/elem-details.js" rel="nofollow">available as a Modernizr plugin</a> and has been <a href="https://github.com/phiggins42/has.js/blob/6a7d67108b32fc1811fad8bafb14b2d9313c86dc/detect/features.js#L154-176" rel="nofollow">included in the has.js feature testing library</a> as well.</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=17068#respond' onclick='return addComment.moveForm( "div-comment-17068", "17068", "respond", "3558" )' aria-label='Reply to Mathias Bynens'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-17071">
+				<div id="div-comment-17071" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://1.gravatar.com/avatar/1dce66e3f7dfc4d7ce134b92b797327f?s=48&#038;d=mm&#038;r=g' srcset='http://1.gravatar.com/avatar/1dce66e3f7dfc4d7ce134b92b797327f?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn"><a href='http://burningbird.net' rel='external nofollow' class='url'>Shelley</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-17071">
+			August 9, 2011 at 4:57 pm</a>		</div>
+
+		<p>Interesting look, and thanks for demonstrating the pseudo elements. </p>
+<p>I don&#8217;t care for details&#8211;didn&#8217;t before, don&#8217;t now. </p>
+<p>Details might have been useful a decade ago, but the state of the art today surpasses whatever functionality ends up being cobbled together to support this element. </p>
+<p>Works without JS? Well so does CSS, and you can use newer CSS effects now to create the same functionality. </p>
+<p>People have JS turned off? I&#8217;m not sure this is a viable concern nowadays. Seriously, how many people do have JS turned off? And if you design a site correctly, those few still have access to all the data. </p>
+<p>How many years will we need to go through while the browser companies experiment with pseudo elements to allow web authors/developers the ability to style the details element, and then how long before this is standardized so we don&#8217;t need five variations of proprietary prefixes?</p>
+<p>By the time Details is really useful, no one will care.</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=17071#respond' onclick='return addComment.moveForm( "div-comment-17071", "17071", "respond", "3558" )' aria-label='Reply to Shelley'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-17074">
+				<div id="div-comment-17074" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://2.gravatar.com/avatar/e89c5f6c51275ad5c8767758fd724c3c?s=48&#038;d=mm&#038;r=g' srcset='http://2.gravatar.com/avatar/e89c5f6c51275ad5c8767758fd724c3c?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn">Francesco</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-17074">
+			August 9, 2011 at 6:40 pm</a>		</div>
+
+		<p>Well, I guess the answer to Shelley is &#8220;about one&#8221; (year). :-) No doubt it&#8217;ll soon be supported by Firefox (and we already know about Opera)&#8230; Safari won&#8217;t be long behind and we&#8217;re already covering pretty much everything but IE. Considering that in about a year we will have IE 10 it is possible that it might be included in that too, so&#8230;</p>
+<p>This makes this article both very interesting and useful!</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=17074#respond' onclick='return addComment.moveForm( "div-comment-17074", "17074", "respond", "3558" )' aria-label='Reply to Francesco'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-17075">
+				<div id="div-comment-17075" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/c80b288c873d1c20659ada314c8336c9?s=48&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/c80b288c873d1c20659ada314c8336c9?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn"><a href='http://keryx.se/' rel='external nofollow' class='url'>Lars Gunther</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-17075">
+			August 9, 2011 at 6:53 pm</a>		</div>
+
+		<p>The example where summary contains a label is solvable if a general principle is added: If a hidden element gets focus details should open automatically to reveal its content.</p>
+<p>Perhaps we need a bug on this one&#8230;</p>
+<p>In the mean time it might be worth experimenting with something like this (written in haste and not very generic):</p>
+<p><code><br />
+document.querySelectorAll("details&gt;input").onfocus = function () {<br />
+    if ( this.parentNode.open == false ) {<br />
+        this.parentNode.open = true;<br />
+    }<br />
+};<br />
+</code></p>
+<p>BTW, I have the same gripe when people position skip links off screen but do not reveal the visually when focused. Same kind of confusion, simple solutions exist:</p>
+<p><code><br />
+a.skiplink {<br />
+    text-indent: -9999px;<br />
+}<br />
+a.skiplink:focus {<br />
+    text-indent: 0;<br />
+}<br />
+</code></p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=17075#respond' onclick='return addComment.moveForm( "div-comment-17075", "17075", "respond", "3558" )' aria-label='Reply to Lars Gunther'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-17077">
+				<div id="div-comment-17077" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://1.gravatar.com/avatar/d70bd194080649fe6fac9c012d4de39c?s=48&#038;d=mm&#038;r=g' srcset='http://1.gravatar.com/avatar/d70bd194080649fe6fac9c012d4de39c?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn"><a href='http://stephaniehobson.ca' rel='external nofollow' class='url'>Stephanie Hobson</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-17077">
+			August 9, 2011 at 10:28 pm</a>		</div>
+
+		<p>I didn&#8217;t know it was working in Chrome! *goes and plays*</p>
+<p>Oh, disappointed to find that I can&#8217;t deep link with a hash :(</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=17077#respond' onclick='return addComment.moveForm( "div-comment-17077", "17077", "respond", "3558" )' aria-label='Reply to Stephanie Hobson'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-17092">
+				<div id="div-comment-17092" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/37372c3acc31affca29886c1a9cbc13b?s=48&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/37372c3acc31affca29886c1a9cbc13b?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn"><a href='http://www.onderhond.com/' rel='external nofollow' class='url'>Niels Matthijs</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-17092">
+			August 10, 2011 at 3:58 pm</a>		</div>
+
+		<p>It&#8217;s a very cool addition to the html5 spec, though it does make me wonder about the semantic value of these new tags. It pretty much tells you nothing at all about its contents, it merely describes browser behavior. And while such functional shortcuts are pretty handy, there must be a better way to mark them in our html than using html tags, no?</p>
+<p>Another random question: is the detail a sectioning element or do we need extra wrappers for that?</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=17092#respond' onclick='return addComment.moveForm( "div-comment-17092", "17092", "respond", "3558" )' aria-label='Reply to Niels Matthijs'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-17093">
+				<div id="div-comment-17093" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/37f4e5fc23945bd60ddb939d07d790bc?s=48&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/37f4e5fc23945bd60ddb939d07d790bc?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn"><a href='http://www.comprx.com' rel='external nofollow' class='url'>Michael</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-17093">
+			August 10, 2011 at 4:03 pm</a>		</div>
+
+		<p>I know that it isn&#8217;t a necessity, but when I look at this I think about an average user, and my first thought is that I would ad in the cursor: pointer; property in the CSS so that the user understands that this is a click-able element.</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=17093#respond' onclick='return addComment.moveForm( "div-comment-17093", "17093", "respond", "3558" )' aria-label='Reply to Michael'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-17101">
+				<div id="div-comment-17101" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/35d15750b8ccddc331ed4c7660ca14c4?s=48&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/35d15750b8ccddc331ed4c7660ca14c4?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn">Alohci</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-17101">
+			August 10, 2011 at 9:43 pm</a>		</div>
+
+		<p>The more I think about details/summary the less I like them. HTML is supposed to be a mark-up language of semantics, and I can&#8217;t see what details/summary provides semantically that article/h1 does not.</p>
+<p>On that basis, it would have been better for the article element to have taken an attribute which gave it the details/summary behaviour than to have minted two new elements.</p>
+<p>But even then, adding UI behaviour to elements in mark-up feels like a layering violation. Behaviour bindings should be defined elsewhere, possibly exploiting XBL.</p>
+<p>I wouldn&#8217;t be surprised if the details and summary elements are one day viewed in much the same way as the font element is today.</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=17101#respond' onclick='return addComment.moveForm( "div-comment-17101", "17101", "respond", "3558" )' aria-label='Reply to Alohci'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-17103">
+				<div id="div-comment-17103" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://2.gravatar.com/avatar/8dfcd241543368b190b43a07f95a2975?s=48&#038;d=mm&#038;r=g' srcset='http://2.gravatar.com/avatar/8dfcd241543368b190b43a07f95a2975?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn">nash</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-17103">
+			August 11, 2011 at 1:26 am</a>		</div>
+
+		<p>So is it possible take an existing element and style it like a details element?</p>
+<p>display: details; or something similar?</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=17103#respond' onclick='return addComment.moveForm( "div-comment-17103", "17103", "respond", "3558" )' aria-label='Reply to nash'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-17122">
+				<div id="div-comment-17122" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/fa41d8fbd0879cee11da11ade94580b2?s=48&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/fa41d8fbd0879cee11da11ade94580b2?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn"><a href='http://barraponto.blog.br' rel='external nofollow' class='url'>Capi Etheriel</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-17122">
+			August 11, 2011 at 2:50 pm</a>		</div>
+
+		<p>I agree with Ahlocci: details is the new font element.</p>
+<p>Also, why are list icons a CSS property and details icons a CSS pseudo-element? Go figure. But it isn&#8217;t a pseudo-class, please correct that.</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=17122#respond' onclick='return addComment.moveForm( "div-comment-17122", "17122", "respond", "3558" )' aria-label='Reply to Capi Etheriel'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-17147">
+				<div id="div-comment-17147" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://1.gravatar.com/avatar/49c75f3ef4822cd380460640f09b78ae?s=48&#038;d=mm&#038;r=g' srcset='http://1.gravatar.com/avatar/49c75f3ef4822cd380460640f09b78ae?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn"><a href='http://www.maujor.com/blog' rel='external nofollow' class='url'>Mauricio Samy Silva</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-17147">
+			August 12, 2011 at 8:19 pm</a>		</div>
+
+		<p>This article has been translated into Brazilian-Portuguese. Translation his hosted at: <a href="http://www.maujor.com/blog/2011/08/10/elementos-details-e-summary-da-html5/" rel="nofollow">Elementos details e summary da HTML5</a>.</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=17147#respond' onclick='return addComment.moveForm( "div-comment-17147", "17147", "respond", "3558" )' aria-label='Reply to Mauricio Samy Silva'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-17167">
+				<div id="div-comment-17167" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/f09659197ae3547d731c9df49b2e2440?s=48&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/f09659197ae3547d731c9df49b2e2440?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn"><a href='http://varhi.com' rel='external nofollow' class='url'>alonguo</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-17167">
+			August 14, 2011 at 1:41 pm</a>		</div>
+
+		<p>I have chranslate this great article into chinese, If you like chinese  version you can vist <a href="http://varhi.com/?p=4686" rel="nofollow">如何避免 HTML5 的常见误区</a>. Thanks Tom Leadbetter</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=17167#respond' onclick='return addComment.moveForm( "div-comment-17167", "17167", "respond", "3558" )' aria-label='Reply to alonguo'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-17226">
+				<div id="div-comment-17226" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://1.gravatar.com/avatar/ae9ee1de900cdc210f3b51d70e572571?s=48&#038;d=mm&#038;r=g' srcset='http://1.gravatar.com/avatar/ae9ee1de900cdc210f3b51d70e572571?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn">Techeese</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-17226">
+			August 19, 2011 at 3:15 am</a>		</div>
+
+		<p>This is interesting combining this with transition of CSS3 you can achieve a js kind of effect :)</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=17226#respond' onclick='return addComment.moveForm( "div-comment-17226", "17226", "respond", "3558" )' aria-label='Reply to Techeese'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-17400">
+				<div id="div-comment-17400" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://2.gravatar.com/avatar/b7f5e43d201d6ab3a522650d679e793c?s=48&#038;d=mm&#038;r=g' srcset='http://2.gravatar.com/avatar/b7f5e43d201d6ab3a522650d679e793c?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn"><a href='http://joneff.info' rel='external nofollow' class='url'>joneff</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-17400">
+			August 29, 2011 at 8:25 am</a>		</div>
+
+		<p>Once upon I time I did need a details / summary element.</p>
+<p>And since it was not supported, I had to do my own little sugar to be able to have it.</p>
+<p><a href="https://gist.github.com/414384" rel="nofollow">https://gist.github.com/414384</a></p>
+<p>It&#8217;s not as fancy as your&#8217;s but it works just as fine ;)</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=17400#respond' onclick='return addComment.moveForm( "div-comment-17400", "17400", "respond", "3558" )' aria-label='Reply to joneff'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-17475">
+				<div id="div-comment-17475" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/69f7b42c21dab90464c455ae85de9af7?s=48&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/69f7b42c21dab90464c455ae85de9af7?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn"><a href='http://xujianye.com' rel='external nofollow' class='url'>Prince Xu</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-17475">
+			September 5, 2011 at 2:47 am</a>		</div>
+
+		<p>Great article~!<br />
+I wonder if I can translate it into Chinese and share it with my friends?~</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=17475#respond' onclick='return addComment.moveForm( "div-comment-17475", "17475", "respond", "3558" )' aria-label='Reply to Prince Xu'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-17846">
+				<div id="div-comment-17846" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/0c0b7ef9d8e2ac0f9b3fa2671748c7a1?s=48&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/0c0b7ef9d8e2ac0f9b3fa2671748c7a1?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn">Felicja</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-17846">
+			September 30, 2011 at 4:34 pm</a>		</div>
+
+		<p>I wonder what would happen if I used <code>&lt;deatils&gt;</code> now, and then after a few months FF and Opera would have native support for it, so they would add elements like arrows which weren&#8217;t expected during creating a website.</p>
+<p>Do you have any solution? Something to reduce arrows that are not displayed yet?</p>
+<p>(I hope you understand it, I&#8217;m Pole so I can make mistakes&#8230;)</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=17846#respond' onclick='return addComment.moveForm( "div-comment-17846", "17846", "respond", "3558" )' aria-label='Reply to Felicja'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-17919">
+				<div id="div-comment-17919" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://2.gravatar.com/avatar/b7f5e43d201d6ab3a522650d679e793c?s=48&#038;d=mm&#038;r=g' srcset='http://2.gravatar.com/avatar/b7f5e43d201d6ab3a522650d679e793c?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn"><a href='http://joneff.org' rel='external nofollow' class='url'>joneff</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-17919">
+			October 5, 2011 at 7:35 pm</a>		</div>
+
+		<p>That&#8217;s a very very very interesting question.</p>
+<p>I suppose that there will be vendor specific property to show / hide the marker. Something like &#8220;list-style: none&#8221; but for the details element.</p>
+<p>So if you use details now, and it&#8217;s added later, you could very easily add another line of CSS to hide the arrow / marker</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=17919#respond' onclick='return addComment.moveForm( "div-comment-17919", "17919", "respond", "3558" )' aria-label='Reply to joneff'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-18701">
+				<div id="div-comment-18701" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://1.gravatar.com/avatar/a4c5549e5995f93389c4f91ce57069d5?s=48&#038;d=mm&#038;r=g' srcset='http://1.gravatar.com/avatar/a4c5549e5995f93389c4f91ce57069d5?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn"><a href='http://www.web4you.co.in' rel='external nofollow' class='url'>Deven</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-18701">
+			November 18, 2011 at 1:54 pm</a>		</div>
+
+		<p>Cool description of HTML 5 explaining with an example. But i am still unable to find the reason on why to use  at the place of </p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=18701#respond' onclick='return addComment.moveForm( "div-comment-18701", "18701", "respond", "3558" )' aria-label='Reply to Deven'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-18711">
+				<div id="div-comment-18711" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/0429f540a6aa6e8642cf16d9ab4ceefa?s=48&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/0429f540a6aa6e8642cf16d9ab4ceefa?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn"><a href='http://www.github.com/dotink' rel='external nofollow' class='url'>Matthew J. Sahagian</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-18711">
+			November 19, 2011 at 2:17 am</a>		</div>
+
+		<p>&#8220;Alohci&#8221; above had it right.</p>
+<p>I&#8217;m encouraging every developer who is reasoned and interested in the future of the web, clean code separation, separation of concerns, etc, to boycott HTML5.</p>
+<p>This idea is straight out of 1995.  And while I do see semantic value in summary/details elements, I see nothing but the definition of behavior and presentation in the way it&#8217;s being automatically implement, and worse, with the addition of the &#8220;open&#8221; attribute being written into the spec.</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=18711#respond' onclick='return addComment.moveForm( "div-comment-18711", "18711", "respond", "3558" )' aria-label='Reply to Matthew J. Sahagian'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-19306">
+				<div id="div-comment-19306" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/feafee06c90a4d38c0dabedd64b22841?s=48&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/feafee06c90a4d38c0dabedd64b22841?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn">Gene</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-19306">
+			November 28, 2011 at 6:55 pm</a>		</div>
+
+		<p>@Felicja</p>
+<p>Not totally sure what you are asking, but currently you can use the following css to hide the arrow.</p>
+<p>    summary::-webkit-details-marker { display:none; }</p>
+<p>Assuming this gets implemented, and the other browsers follow convention then, presumably:</p>
+<p>summary::-moz-details-marker { display:none; }<br />
+summary::-ms-details-marker { display:none; }<br />
+summary::-o-details-marker { display:none; }<br />
+summary:: details-marker { display:none; }</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=19306#respond' onclick='return addComment.moveForm( "div-comment-19306", "19306", "respond", "3558" )' aria-label='Reply to Gene'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-19308">
+				<div id="div-comment-19308" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/0c0b7ef9d8e2ac0f9b3fa2671748c7a1?s=48&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/0c0b7ef9d8e2ac0f9b3fa2671748c7a1?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn">Felicja</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-19308">
+			November 28, 2011 at 7:58 pm</a>		</div>
+
+		<p>In fact I already have the answer to my question.</p>
+<p>Is there any solution to hide the deatil&#8217;s default style? NO.</p>
+<p>Other browsers can make their own notation or even give up on this automatically implement behaviour (I&#8217;m for!). I think that &#8220;Matthew J. Sahagian&#8221; is right.</p>
+<p>By the way, there is no need to add new pseudo class. It can be implemented just as the same as <code>list-style</code> property. And I&#8217;m sure that if there was default style for this element, people would reset it, because everyone wants to have custom styles. I know that pseudo class means more opportunities, but in my opinion it&#8217;s unnecessary. Don&#8217;t forget the KISS principle :)</p>
+<p>I think there should be left just tags (details and summary), styled like lists, and if someone wants, he could implement behaviour in JS, optionally. Who agrees with me?</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=19308#respond' onclick='return addComment.moveForm( "div-comment-19308", "19308", "respond", "3558" )' aria-label='Reply to Felicja'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment byuser comment-author-toml bypostauthor odd alt thread-odd thread-alt depth-1" id="comment-19389">
+				<div id="div-comment-19389" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://2.gravatar.com/avatar/8588be90852cc86af8087e026ef36995?s=48&#038;d=mm&#038;r=g' srcset='http://2.gravatar.com/avatar/8588be90852cc86af8087e026ef36995?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn"><a href='http://www.tomleadbetter.co.uk' rel='external nofollow' class='url'>Tom Leadbetter</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-19389">
+			November 29, 2011 at 6:27 pm</a>		</div>
+
+		<p>@Felicja, as Gene says and as stated in the post, to hide the default arrow, use:</p>
+<p>summary::-webkit-details-marker {<br />
+  display: none<br />
+}</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=19389#respond' onclick='return addComment.moveForm( "div-comment-19389", "19389", "respond", "3558" )' aria-label='Reply to Tom Leadbetter'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-19391">
+				<div id="div-comment-19391" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/0c0b7ef9d8e2ac0f9b3fa2671748c7a1?s=48&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/0c0b7ef9d8e2ac0f9b3fa2671748c7a1?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn">Felicja</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-19391">
+			November 29, 2011 at 6:44 pm</a>		</div>
+
+		<p>That was in article, I wondered what will happen after the other browsers add their own support for &#8220;details&#8221; and &#8220;summary&#8221;. And the answer is: nothing good.</p>
+<p>In my opinion those elements are useless unless browsers decide which way do they choose to implement it. Now I can&#8217;t even predict how my site will look in Firefox two months later. I&#8217;m sure they&#8217;ll change approach described in this article.</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=19391#respond' onclick='return addComment.moveForm( "div-comment-19391", "19391", "respond", "3558" )' aria-label='Reply to Felicja'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-19392">
+				<div id="div-comment-19392" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://1.gravatar.com/avatar/1dce66e3f7dfc4d7ce134b92b797327f?s=48&#038;d=mm&#038;r=g' srcset='http://1.gravatar.com/avatar/1dce66e3f7dfc4d7ce134b92b797327f?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn"><a href='http://burningbird.net' rel='external nofollow' class='url'>Shelley</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-19392">
+			November 29, 2011 at 7:39 pm</a>		</div>
+
+		<p>I had submitted a bug request and a change proposal to remove details/summary from the HTML5 specification for two reasons. </p>
+<p>The first is that details/summary is more behavior than semantics.</p>
+<p>The second is that the state of art for providing this kind of behavior using JavaScript and CSS is beyond anything that can be provided with details summary. Throw in ARIA and we&#8217;re not already all set, we&#8217;re ready to use the technology right now. </p>
+<p>An additional reason could also be that we&#8217;re bloating our browsers by inserting n number of needless elements. </p>
+<p>However, I could not generate enough interest in the HTML WG, so the change proposal failed.</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=19392#respond' onclick='return addComment.moveForm( "div-comment-19392", "19392", "respond", "3558" )' aria-label='Reply to Shelley'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-19393">
+				<div id="div-comment-19393" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://1.gravatar.com/avatar/1dce66e3f7dfc4d7ce134b92b797327f?s=48&#038;d=mm&#038;r=g' srcset='http://1.gravatar.com/avatar/1dce66e3f7dfc4d7ce134b92b797327f?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn"><a href='http://burningbird.net' rel='external nofollow' class='url'>Shelley</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-19393">
+			November 29, 2011 at 7:41 pm</a>		</div>
+
+		<p>I&#8217;ll also add that the state of the art for a details/summary behavior not only allows us complete control over the behavior (slow sliding versus instant collapse/expansion, and what happens when JS is turned off), but also on appearance. And with a lot less consternation, too.</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=19393#respond' onclick='return addComment.moveForm( "div-comment-19393", "19393", "respond", "3558" )' aria-label='Reply to Shelley'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-19398">
+				<div id="div-comment-19398" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://2.gravatar.com/avatar/b7f5e43d201d6ab3a522650d679e793c?s=48&#038;d=mm&#038;r=g' srcset='http://2.gravatar.com/avatar/b7f5e43d201d6ab3a522650d679e793c?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn"><a href='http://joneff.info' rel='external nofollow' class='url'>joneff</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-19398">
+			November 29, 2011 at 9:09 pm</a>		</div>
+
+		<p>@Shelley, I couldn&#8217;t disagree more. The HTML vocabulary is weak enough even without removing the details / summary pair. Let me explain:</p>
+<p>1) To counter you, saying that details / summary is more behaviour than semantics is like saying the same for SELECT element, or any of range, date/time inputs, as they as well incorporate certain behaviour.<br />
+2) The fact that we can mimic this type of behaviour with ordinary HTML/CSS/JS doesn&#8217;t mean such behaviour shouldn&#8217;t be built in.</p>
+<p>Either the HTML vocabulary should expand more to include other interface elements, such as tabs, tree view, tree grid etc, or an entirely new language must appear for the likes of HTML based applications.</p>
+<p>@Felicija, it&#8217;s a simple answer &#8212; don&#8217;t use those now. Instead wait a bit :) HTML5 is far for completion and so is CSS3. Yet people use both and write a bit more code. Sure, it&#8217;s gonna take some time for browsers to clear out differences, but those differences will be eventually resolved.</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=19398#respond' onclick='return addComment.moveForm( "div-comment-19398", "19398", "respond", "3558" )' aria-label='Reply to joneff'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-19402">
+				<div id="div-comment-19402" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://1.gravatar.com/avatar/1dce66e3f7dfc4d7ce134b92b797327f?s=48&#038;d=mm&#038;r=g' srcset='http://1.gravatar.com/avatar/1dce66e3f7dfc4d7ce134b92b797327f?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn"><a href='http://burningbird.net' rel='external nofollow' class='url'>Shelley</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-19402">
+			November 29, 2011 at 9:39 pm</a>		</div>
+
+		<p>The select element was created before we started this new round of &#8220;semantically meaningful&#8221; elements, such as hidden, details/summary, et al.</p>
+<p>And the select element is not behavior we can emulate easily with JavaScript and CSS. </p>
+<p>We don&#8217;t hand code the same procedure over and over again when we develop: we use libraries. With the concept of reuse, we can keep our programming languages&#8211;and our applications&#8211;simpler.</p>
+<p>We don&#8217;t need to define a new element for every possible web page use, when we can easily use existing elements and technologies to create the effect, usability, and appearance.</p>
+<p>As for HTML5 being far from completed, it&#8217;s in Last Call.</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=19402#respond' onclick='return addComment.moveForm( "div-comment-19402", "19402", "respond", "3558" )' aria-label='Reply to Shelley'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-19405">
+				<div id="div-comment-19405" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/0c0b7ef9d8e2ac0f9b3fa2671748c7a1?s=48&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/0c0b7ef9d8e2ac0f9b3fa2671748c7a1?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn">Felicja</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-19405">
+			November 30, 2011 at 12:12 am</a>		</div>
+
+		<p>I noticed something. &#8220;Details&#8221; element is nothing but jQuery .toggle() function automatically implemented. But what if someone wants to get slide effect (99% of cases)? He would have to write special JS which overwrites default browsers behaviour. Does it make sense? It&#8217;s pathetic.</p>
+<p>So it&#8217;s not helpful. Only makes mess. Why don&#8217;t they just make jQuery built-in? :)<br />
+How do you think, will they create as much HTML5 elements as there are jQuery functions? It would make life easier! :D</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=19405#respond' onclick='return addComment.moveForm( "div-comment-19405", "19405", "respond", "3558" )' aria-label='Reply to Felicja'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-19407">
+				<div id="div-comment-19407" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://2.gravatar.com/avatar/b7f5e43d201d6ab3a522650d679e793c?s=48&#038;d=mm&#038;r=g' srcset='http://2.gravatar.com/avatar/b7f5e43d201d6ab3a522650d679e793c?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn"><a href='http://joneff.info' rel='external nofollow' class='url'>joneff</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-19407">
+			November 30, 2011 at 12:48 am</a>		</div>
+
+		<p>@Shelley, again I agree to disagree.</p>
+<p>As soon as you start developing something serious, and you run out of HTML vocabulary.</p>
+<p>Sure, I can do tabs i at least 10 different ways, but there is no single straightforward way that I can choose and make it just work.</p>
+<p>And since one can&#8217;t truly encapsulate and bundle stuff ala shadow dom or binary of sort; nor can one extend the doctype definition so it&#8217;s understood by the browsers and add elements if needed; nor anything else that will allow further and proper reusage of components &#8212; one has to wait for the standards. </p>
+<p>As for completion of standards, I was referring not only to the standard itself, but the accompanying standards as well. Sure, we have details / summary elements in the standard. We have context menus and other for that matter. Yet, we have scarce support in browsers, as specs on certain aspects are yet to be reviewed and implemented.</p>
+<p>To me completed kinda equals completed with the accompanying standards, plus proper browser support without gazillion hacks.</p>
+<p>And since we are both as stubborn as possible and we could argue on this and whether the Aston or the Jag is the true gents car and no one is going to step back, I suggest we wait and see what happens.</p>
+<p>@Felicja, now that&#8217;s an odd statement. If one desires to overwrite browser behaviour, one has to simply stop the event default behaviour with a well built in method. e.g. event.preventDefault(). No further overwriting necessary.</p>
+<p>And it makes perfect sense &#8212; the standard covers the basics and devs take care for the rest.</p>
+<p>In addition, built in jQ won&#8217;t get us anywhere. Too much &#8220;magic&#8221; happens inside jQ that not so many devs are aware of. And it is that magic that makes some devs go &#8220;we don&#8217;t need no details, we need $.toggle()&#8221; ;)</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=19407#respond' onclick='return addComment.moveForm( "div-comment-19407", "19407", "respond", "3558" )' aria-label='Reply to joneff'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-19521">
+				<div id="div-comment-19521" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/0429f540a6aa6e8642cf16d9ab4ceefa?s=48&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/0429f540a6aa6e8642cf16d9ab4ceefa?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn"><a href='http://www.github.com/dotink' rel='external nofollow' class='url'>Matthew J. Sahagian</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-19521">
+			December 1, 2011 at 4:22 am</a>		</div>
+
+		<p>@joneff</p>
+<p>I already mentioned this in the article on NetTuts related to this, which is actually how I stumbled upon this thread.</p>
+<p>The select element, as well as other standard input elements, despite having a default (and often times not very customizable) standard appearance and behavior is not the analogous issue in my opinion.</p>
+<p>The fact for example that a checkbox can be &#8220;checked&#8221; or that an option can be &#8220;selected&#8221; is indicative of the data which the markup is defining.  These elements and attributes actually say something about the available data as well as what is currently selected, I.e. They represent more than presentation, but an actual state of data.</p>
+<p>Unfortunately the &#8220;open&#8221; attribute does not represent the same thing.  I am find with the existence of a details and summary element.  In my opinion those are OK as far as semantics are concerned.  What I am not OK with is the definition of an attribute which has PURELY presentational value.</p>
+<p>The open attribute does not say anything about the state of the data, but the presentation of it, namely whether or  not it is visible.</p>
+<p>In addition to this, I think it&#8217;s a very poor decision to make the toggle button a pseudo element.</p>
+<p>We could have used pre-existing attributes for this.  Indeed, similar to forms, the toggle button could simply be an anchor with a &#8220;for&#8221; attribute defined containing the &#8220;id&#8221; of the details element.</p>
+<p>This would make a lot more sense in my opinion.  Similar to anchors they are &#8220;contextual&#8221; links &#8212; which is fine if you want to define default behavior and style for (as we already do with other anchors).</p>
+<p><code><br />
+&lt;style&gt;<br />
+   details { display: none; }<br />
+&lt;/style&gt;</code></p>
+<p>&lt;article&gt;<br />
+     &lt;summary&gt;<br />
+         This is a summary of the article &lt;a class=&quot;toggle&quot; for=&quot;details-1&quot;&gt;read more&lt;/a&gt;<br />
+     &lt;/summary&gt;<br />
+     &lt;details id=&quot;details-1&quot;&gt;<br />
+         Here are the details<br />
+     &lt;/details&gt;<br />
+&lt;/article&gt;<br />
+</p>
+<p>Firstly, the toggle button now becomes much more easily accessible, but can be equally easily styled using a simple common re-usable class (and no, I&#8217;m not saying write the class into the spec, just the click behavior).</p>
+<p>This would represent a common behavior we&#8217;ve come to know with labels, where definining the for attribute focuses the input with the same &#8220;id&#8221;.</p>
+<p>In addition we would be able to target such anchors globally with some pretty simple jQuery or equivalent.</p>
+<p>This prevents the precedent as well that we will suddenly begin using pseudo-selectors for what rightfully should be elements.</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=19521#respond' onclick='return addComment.moveForm( "div-comment-19521", "19521", "respond", "3558" )' aria-label='Reply to Matthew J. Sahagian'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-20357">
+				<div id="div-comment-20357" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/3cb1b8a51cd306a2dd584bfd0ff1a936?s=48&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/3cb1b8a51cd306a2dd584bfd0ff1a936?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn">Robert Folkerts</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-20357">
+			December 10, 2011 at 4:13 am</a>		</div>
+
+		<p>@Shelly</p>
+<p>I don&#8217;t see how this is not semantic markup.  Every article in scientific or technical journals begins with a one paragraph (or so) abstract.  That is followed by the body of the article.  The / tags do that.  The summary is the &#8216;abstract&#8217; and the rest of the details would be the article.  I can implement that right now with a (hypothetical) PhysRev.css that would make the article look like something from Physical Review.  How is this not semantic?</p>
+<p>A blog engine could provide only the summary to an RSS feed, and provide full details for an &#8216;article view&#8217;.</p>
+<p>Show/hide is just one of several possible implementations.  / is semantic.</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=20357#respond' onclick='return addComment.moveForm( "div-comment-20357", "20357", "respond", "3558" )' aria-label='Reply to Robert Folkerts'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-21016">
+				<div id="div-comment-21016" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://1.gravatar.com/avatar/460c9854061f31362affe053aa308ad9?s=48&#038;d=mm&#038;r=g' srcset='http://1.gravatar.com/avatar/460c9854061f31362affe053aa308ad9?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn"><a href='http://www.domblogger.net/' rel='external nofollow' class='url'>Alice Wonder</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-21016">
+			December 22, 2011 at 10:44 am</a>		</div>
+
+		<p>Hi Tom,</p>
+<p>I like the details tag but my primary intended use is actually for a works cited page, it is amazing how big those can get when you properly reference stuff. Details lets me shrink it down so the user can skim authors / publication dates (what I put in the summary) without as much scrolling, and expand the ones they are interested in.</p>
+<p>The accessibility problem is one that I discovered, and I currently work around it by adding a standard html button that toggles the detail open or closed.</p>
+<p>I emulate details for non chrome browser, and actually right now am emulating it for chrome as well because I can&#8217;t figure out how to trigger off the DOM changing state. This is necessary so that if the details are opened the &#8220;normal&#8221; way, the accessibility button can be triggered to change along with it.</p>
+<p>It looks from the spec like proper implementation involves adding and deleting the open attribute when the details are displayed or collapsed, but I can not find a details specific event to attach a script function to nor can I find a generic event that driggers when a node experiences a DOM change.</p>
+<p>Is triggering an event when details are toggled something the W3C just did not think about, or am I missing it?</p>
+<p>Thank you for your time, I love this site :)</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=21016#respond' onclick='return addComment.moveForm( "div-comment-21016", "21016", "respond", "3558" )' aria-label='Reply to Alice Wonder'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-21017">
+				<div id="div-comment-21017" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://1.gravatar.com/avatar/460c9854061f31362affe053aa308ad9?s=48&#038;d=mm&#038;r=g' srcset='http://1.gravatar.com/avatar/460c9854061f31362affe053aa308ad9?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn"><a href='http://www.domblogger.net/' rel='external nofollow' class='url'>Alice Wonder</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-21017">
+			December 22, 2011 at 10:58 am</a>		</div>
+
+		<p>@Felicja &#8211; I can use many of jQuery&#8217;s animation functions (like toggle, hide, etc.) because the way jQuery implements them is by applying style attributes to the node.</p>
+<p>The environment I am working in, by choice, does not allow in-line style. I use CSP to enforce it, which means many jQuery functions don&#8217;t work in browsers that enforce CSP (Content Security Policy).</p>
+<p>I do use jQuery, just not the animations, and I set class attributes set to a class defined in an external style sheet. HTML5 stuff though like the media nodes and even details allows me to provide a richer web site that even works well for paranoid people who have scripting completely disabled.</p>
+<p>With how annoying hover ads are becoming, I frequently surf with JavaScript disabled or at least with NoScript enforcing.</p>
+<p>That&#8217;s why I really love solutions that do not depend upon JavaScript to implement.</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=21017#respond' onclick='return addComment.moveForm( "div-comment-21017", "21017", "respond", "3558" )' aria-label='Reply to Alice Wonder'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-21250">
+				<div id="div-comment-21250" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://1.gravatar.com/avatar/460c9854061f31362affe053aa308ad9?s=48&#038;d=mm&#038;r=g' srcset='http://1.gravatar.com/avatar/460c9854061f31362affe053aa308ad9?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn"><a href='http://www.domblogger.net/' rel='external nofollow' class='url'>Alice Wonder</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-21250">
+			January 13, 2012 at 8:59 am</a>		</div>
+
+		<p>My emulation does not currently work in Internet Explorer (tested in IE8) but seems to work everywhere else (including tablets), but I have written some JavaScript that emulates details for browsers that do not natively support it, including accessibility considerations.</p>
+<p><a href="http://www.domblogger.net/Projects/JSdetails" rel="nofollow">JSdetails</a></p>
+<p>It is still a work in progress, I need to fix it in IE and I need to provide easy function for applying emulation to details added after the script has loaded (IE for things fetched via Ajax) and there are probably bugs, but it does a decent job other than for IE.</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=21250#respond' onclick='return addComment.moveForm( "div-comment-21250", "21250", "respond", "3558" )' aria-label='Reply to Alice Wonder'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-28098">
+				<div id="div-comment-28098" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://1.gravatar.com/avatar/d30f928faf8815211a2ec2b6bc730dd5?s=48&#038;d=mm&#038;r=g' srcset='http://1.gravatar.com/avatar/d30f928faf8815211a2ec2b6bc730dd5?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn">Xavier</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-28098">
+			June 14, 2012 at 1:51 pm</a>		</div>
+
+		<p>Here is my sample to make this work with css3.</p>
+<p>	&lt;!&#8211;  &#8211;&gt;</p>
+<p>	/* Default skin */<br />
+	details<br />
+	{<br />
+		display							: block ;<br />
+		margin							: 0 0 0.5em 0 ;<br />
+		padding							: 0<br />
+	}</p>
+<p>	.no-details details &gt; *<br />
+	{<br />
+		background-color				: transparent;<br />
+		/*<br />
+		border							: 1px solid black ;<br />
+		opacity							: 0.8<br />
+		*/<br />
+	}</p>
+<p>	/* SET FX */<br />
+	/*<br />
+	.no-details details[tabindex] &gt; summary+*<br />
+	{<br />
+		transition-property				: opacity ;<br />
+		-moz-transition-property		: opacity ;<br />
+		-ms-transition-property			: opacity ;<br />
+		-o-transition-property			: opacity ;<br />
+		-webkit-transition-property		: opacity ;<br />
+		transition-duration				: 0.5s ;<br />
+		-moz-transition-duration		: 0.5s ;<br />
+		-ms-transition-duration			: 0.5s ;<br />
+		-o-transition-duration			: 0.5s ;<br />
+		-webkit-transition-duration		: 0.5s ;<br />
+	}</p>
+<p>	.no-details details[tabindex] &gt; summary+*,<br />
+	.no-details details[tabindex][open]:focus &gt; summary+*<br />
+	{<br />
+		opacity							: 0<br />
+	}<br />
+	.no-details details[tabindex][open] &gt; summary+*,<br />
+	.no-details details[tabindex]:not([open]):focus &gt; summary+*<br />
+	{<br />
+		opacity							: 1;<br />
+		color							: red<br />
+	}<br />
+	*/</p>
+<p>	/* Core */<br />
+	.no-details details[tabindex]:focus<br />
+	{<br />
+		outline							: none;<br />
+	}</p>
+<p>		.no-details details[tabindex] &gt; summary<br />
+		{<br />
+			position						: static ;<br />
+			display							: block;<br />
+			cursor							: hand ;<br />
+			cursor							: pointer ;<br />
+			font-weight						: bolder ;<br />
+			/* disable text selection */<br />
+			-webkit-touch-callout			: none;<br />
+			-webkit-user-select				: none;<br />
+			-khtml-user-select				: none;<br />
+			-moz-user-select				: none;<br />
+			-ms-user-select					: none;<br />
+			user-select						: none;<br />
+		}</p>
+<p>		/* default state is: closed */<br />
+		.no-details details[tabindex] &gt; summary+*<br />
+		/*.no-details details[tabindex]:not([open]) &gt; summary+**/<br />
+		{<br />
+			display							: none ;<br />
+			padding							: 0 0 0 1.5em ;<br />
+			margin							: 0<br />
+		}</p>
+<p>		/* opened */<br />
+		.no-details details[tabindex][open] &gt; summary+*<br />
+		{<br />
+			display							: block<br />
+		}<br />
+		/* force display for submenus */<br />
+		.no-details details[tabindex] &gt; summary+*:hover<br />
+		{<br />
+			display							: block!important<br />
+		}</p>
+<p>		/* init arrow */<br />
+		.no-details details[tabindex] &gt; summary::before<br />
+		{<br />
+			padding-right					: 0.4em ;<br />
+		 	font-weight						: 0.8em ;<br />
+		}</p>
+<p>		/* closed */<br />
+		/*.no-details details[tabindex] &gt; summary::before,*/<br />
+		.no-details details[tabindex]:not([open]) &gt; summary::before,<br />
+		/* while click opened */<br />
+		.no-details details[tabindex][open]:focus &gt; summary::before<br />
+		{<br />
+			content							: &#8220;►&#8221;<br />
+		}<br />
+		/* content while click opened */<br />
+		.no-details details[tabindex][open]:focus &gt; summary+*<br />
+		{<br />
+			display						 	: none<br />
+		}</p>
+<p>		/* opened */<br />
+		.no-details details[tabindex][open] &gt; summary::before,<br />
+		/* while click closed */<br />
+		.no-details details[tabindex]:not([open]):focus &gt; summary::before<br />
+		{<br />
+			content							: &#8220;▼&#8221;<br />
+		}<br />
+		/* content while click closed */<br />
+		.no-details details[tabindex]:not([open]):focus &gt; summary+*<br />
+		/*.no-details details[tabindex]:focus &gt; summary+**/<br />
+		{<br />
+			display						 	: block<br />
+		}</p>
+<p>&lt;!&#8211;</p>
+<p>	// @js: Use Modernizr to check the navigator capacities<br />
+	if( !Modernizr.details ) jQuery(&#8220;html&#8221;).addClass(&#8220;no-details&#8221;);</p>
+<p>	// @js: Use javascript to force events<br />
+	jQuery(document).on(&#8220;click&#8221;, &#8220;.no-details details &gt; summary&#8221;, function()<br />
+	{<br />
+		var d = jQuery(this).parent(&#8220;details&#8221;) ;<br />
+		d.attr(&#8216;open&#8217;) ? d.removeAttr(&#8216;open&#8217;) : d.attr(&#8216;open&#8217;, &#8216;open&#8217;) ;<br />
+	});</p>
+<p>&#8211;&gt;</p>
+<p>	   title</p>
+<p>	   	content</p>
+<p>	   title</p>
+<p>	   	content</p>
+<p>	   title</p>
+<p>		content<br />
+		<!-- level 2 --></p>
+<p>			title</p>
+<p>				content</p>
+<p>			title</p>
+<p>				content</p>
+<p>			title</p>
+<p>				content</p>
+<p>			title</p>
+<p>				content</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=28098#respond' onclick='return addComment.moveForm( "div-comment-28098", "28098", "respond", "3558" )' aria-label='Reply to Xavier'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-28743">
+				<div id="div-comment-28743" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/97e74c7923816a50b4604a0f0e43cd36?s=48&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/97e74c7923816a50b4604a0f0e43cd36?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn"><a href='https://www.google.com' rel='external nofollow' class='url'>googlebot</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-28743">
+			July 24, 2012 at 6:53 pm</a>		</div>
+
+		<p>I&#8217;m a search engine. I like semantic tags. </p>
+<p>If you don&#8217;t care what I think about you, details/summary probably doesn&#8217;t affect you much.</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=28743#respond' onclick='return addComment.moveForm( "div-comment-28743", "28743", "respond", "3558" )' aria-label='Reply to googlebot'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-29191">
+				<div id="div-comment-29191" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://2.gravatar.com/avatar/e6e589e42701b287671255b24f976286?s=48&#038;d=mm&#038;r=g' srcset='http://2.gravatar.com/avatar/e6e589e42701b287671255b24f976286?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn"><a href='http://www.unleashedmind.com' rel='external nofollow' class='url'>sun</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-29191">
+			November 13, 2012 at 11:36 am</a>		</div>
+
+		<p>The new details/summary elements are great.</p>
+<p>The only detail (pun intended) that strikes me and which is <em>very</em> irritating is why Chrome went with <code>::-webkit-details-marker</code>, <b>instead of simply <code>:before</code></b>.</p>
+<p>The native user agent styling for <code>::-webkit-details-marker</code> is not visible and cannot be revealed in any way.  Just as the example snippets in this post demonstrate, the 99% use-case of web developers will be to override the marker with custom styling, and of course, they will use <code>:before</code> for that.</p>
+<p>— But yet, you first need to figure out which kind of weird hidden user agent pseudo style is causing the default marker to appear, and after you&#8217;ve done so, you still have no clue at all what the <em>actual</em> default styles of the user agent are.</p>
+<p>This aspect of the vendor implementation puts the summary element into a similarly poor position as the <code>&lt;legend&gt;</code> element of fieldsets, which equally receives countless of inconsistent default styles across user agents that are beyond human understanding and are impossible to normalize in a reliable way.</p>
+<p>In short, I do not understand why anyone thought it would be a good idea to introduce an entirely new pseudo element that is specific to summary elements, while the <em>standard</em> <code>:before</code> would have resolved the problem in a much more elegant, reliable, predictable, and customizable way.</p>
+<p>Given that Chrome is still the only native implementation, I hope that browser vendors are still able to correct that and will do so (and most probably vastly simplify their implementations at the same time).  Even though that might cause pain for some existing sites (including me), it would definitely be appreciated and for the better.</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=29191#respond' onclick='return addComment.moveForm( "div-comment-29191", "29191", "respond", "3558" )' aria-label='Reply to sun'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-29404">
+				<div id="div-comment-29404" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/9c9f177fae7d1e9b85fb62d55afdc3ea?s=48&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/9c9f177fae7d1e9b85fb62d55afdc3ea?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn">forivall</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-29404">
+			December 10, 2012 at 9:49 pm</a>		</div>
+
+		<p>Keyboard navigation now works (Chrome  23.0.1271.95).</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=29404#respond' onclick='return addComment.moveForm( "div-comment-29404", "29404", "respond", "3558" )' aria-label='Reply to forivall'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-30829">
+				<div id="div-comment-30829" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://2.gravatar.com/avatar/867e697cafb918c1f2ee3368d8ee3718?s=48&#038;d=mm&#038;r=g' srcset='http://2.gravatar.com/avatar/867e697cafb918c1f2ee3368d8ee3718?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn">ReSpider</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-30829">
+			January 29, 2013 at 11:18 am</a>		</div>
+
+		<p>Is it possible to animate the details tag slideUp or slideDown?</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=30829#respond' onclick='return addComment.moveForm( "div-comment-30829", "30829", "respond", "3558" )' aria-label='Reply to ReSpider'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-33250">
+				<div id="div-comment-33250" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://1.gravatar.com/avatar/7c04383011f842938dd85b4e34619175?s=48&#038;d=mm&#038;r=g' srcset='http://1.gravatar.com/avatar/7c04383011f842938dd85b4e34619175?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn">Patrick</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-33250">
+			April 5, 2013 at 1:01 pm</a>		</div>
+
+		<p>@tom You mention that transitions are &#8220;&#8230; not necessarily good design &#8230;&#8221;, I wouldn&#8217;t argue with that, but transitions are not necessarily bad design either. </p>
+<p>Transitions can be an accessibility enhancement as they draw the attention of the user to the area of the page that is changing. </p>
+<p>If your visually impaired snapping can easily be missed, especially when the area of the page being replaced looks similar to the content it&#8217;s replacing.</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=33250#respond' onclick='return addComment.moveForm( "div-comment-33250", "33250", "respond", "3558" )' aria-label='Reply to Patrick'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-35465">
+				<div id="div-comment-35465" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://2.gravatar.com/avatar/bcec63a7e7845d6d96f3fb1291eebce0?s=48&#038;d=mm&#038;r=g' srcset='http://2.gravatar.com/avatar/bcec63a7e7845d6d96f3fb1291eebce0?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn"><a href='http://morewry.com' rel='external nofollow' class='url'>Rachael L Moore</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-35465">
+			June 25, 2013 at 4:29 pm</a>		</div>
+
+		<p>Animating the transition with only CSS, per <a href="http://stackoverflow.com/questions/17301282/transitioning-between-open-close-in-details-element/17301828#17301828" rel="nofollow">http://stackoverflow.com/questions/17301282/transitioning-between-open-close-in-details-element/17301828#17301828</a></p>
+<p>This technically doesn&#8217;t control the transition animation, but helps with the overall &#8220;feel&#8221;.</p>
+<p><b>CSS</b><br />
+<code><br />
+/* http://daneden.me/animate/ */<br />
+@keyframes fadeInDown {<br />
+    0% {<br />
+        opacity: 0;<br />
+        transform: translateY(-20px);<br />
+    }<br />
+    100% {<br />
+        opacity: 1;<br />
+        transform: translateY(0);<br />
+    }<br />
+}<br />
+.detailsanim[open] {<br />
+    animation-name: fadeInDown;<br />
+    animation-duration: 0.5s;<br />
+}<br />
+</code></p>
+<p><b>HTML</b><br />
+<code><br />
+&lt;details class="detailsanim"&gt;<br />
+    &lt;summary&gt;CSS Animation - Summary&lt;/summary&gt;<br />
+    Try using Dan Eden's fadeInDown to maybe fake it a little.  Animation.<br />
+&lt;/details&gt;<br />
+</code></p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=35465#respond' onclick='return addComment.moveForm( "div-comment-35465", "35465", "respond", "3558" )' aria-label='Reply to Rachael L Moore'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-35557">
+				<div id="div-comment-35557" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://1.gravatar.com/avatar/7c04383011f842938dd85b4e34619175?s=48&#038;d=mm&#038;r=g' srcset='http://1.gravatar.com/avatar/7c04383011f842938dd85b4e34619175?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn">patrick</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-35557">
+			June 27, 2013 at 2:27 pm</a>		</div>
+
+		<p>If your willing to use a child div inside your details elements you can start an animation. This will be more effective if you set the animation height to the height of your smallest content and much more effective if all your details elements are of a similar height.</p>
+<p>see <a href="http://dabblet.com/gist/5866920" rel="nofollow">http://dabblet.com/gist/5866920</a> for a raw example.</p>
+<p>&lt;details&gt;<br />
+    &lt;summary&gt;First&lt;/summary&gt;<br />
+    &lt;div&gt;<br />
+     	&lt;p&gt;Set the animation to run when details open&lt;/p&gt;<br />
+    &lt;/div&gt;<br />
+&lt;/details&gt;</p>
+<p>@keyframes slideDown {<br />
+    0% {<br />
+        opacity: 0;<br />
+        height: 0;<br />
+    }<br />
+    100% {<br />
+        opacity: 1;<br />
+        height: 20px;<br />
+    }<br />
+}<br />
+details[open] &gt; div {<br />
+    animation-name: slideDown;<br />
+    animation-duration: 200ms;<br />
+    animation-timing-function:cubic-bezier(0, 0, 1, 0);<br />
+    overflow:hidden;<br />
+}</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=35557#respond' onclick='return addComment.moveForm( "div-comment-35557", "35557", "respond", "3558" )' aria-label='Reply to patrick'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1 parent" id="comment-35739">
+				<div id="div-comment-35739" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/96c2097ecdde44cefbb7e08f4f273649?s=48&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/96c2097ecdde44cefbb7e08f4f273649?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn">Ian Yang</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-35739">
+			July 1, 2013 at 9:04 am</a>		</div>
+
+		<p>Accordion effect is actually a styling feature, so it should be implemented via CSS/JavaScript with the use of <code>&lt;section&gt;</code>s, <code>&lt;dl&gt;</code> or other appropriate elements rather than using <code>&lt;details&gt;</code>.</p>
+<p><code>&lt;details&gt;</code> is used when you want to hide some contents which should not or no need to be seen by default. For example, the answers of puzzles.</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=35739#respond' onclick='return addComment.moveForm( "div-comment-35739", "35739", "respond", "3558" )' aria-label='Reply to Ian Yang'>Reply</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment byuser comment-author-stevef odd alt depth-2" id="comment-35742">
+				<div id="div-comment-35742" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://2.gravatar.com/avatar/81d4896889881ab794df2415b6de3a37?s=48&#038;d=mm&#038;r=g' srcset='http://2.gravatar.com/avatar/81d4896889881ab794df2415b6de3a37?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn"><a href='http://www.paciellogroup.com/blog/' rel='external nofollow' class='url'>Steve Faulkner</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-35742">
+			July 1, 2013 at 10:33 am</a>		</div>
+
+		<p>Hi Ian, there is nothing in the spec that says details content has to be hidden by default.</p>
+<blockquote><p>When the element is created, if the attribute is absent, the additional information should be hidden; if the attribute is present, that information should be shown. </p></blockquote>
+<p>source: <a href="http://www.w3.org/html/wg/drafts/html/master/interactive-elements.html#the-details-element" rel="nofollow">HTML 5.1</a></p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=35742#respond' onclick='return addComment.moveForm( "div-comment-35742", "35742", "respond", "3558" )' aria-label='Reply to Steve Faulkner'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1 parent" id="comment-35745">
+				<div id="div-comment-35745" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/96c2097ecdde44cefbb7e08f4f273649?s=48&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/96c2097ecdde44cefbb7e08f4f273649?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn">Ian Yang</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-35745">
+			July 1, 2013 at 11:40 am</a>		</div>
+
+		<p>Hi Steve, the spec says it is a &#8220;disclosure widget&#8221;, and the default state of its contents are hidden. Therefore I take these as hints of what <code>&lt;details&gt;</code> is used for.</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=35745#respond' onclick='return addComment.moveForm( "div-comment-35745", "35745", "respond", "3558" )' aria-label='Reply to Ian Yang'>Reply</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment byuser comment-author-stevef odd alt depth-2" id="comment-35748">
+				<div id="div-comment-35748" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://2.gravatar.com/avatar/81d4896889881ab794df2415b6de3a37?s=48&#038;d=mm&#038;r=g' srcset='http://2.gravatar.com/avatar/81d4896889881ab794df2415b6de3a37?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn"><a href='http://www.paciellogroup.com/blog/' rel='external nofollow' class='url'>Steve Faulkner</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-35748">
+			July 1, 2013 at 12:29 pm</a>		</div>
+
+		<p>Just because the default state is closed does not in any way mean that it should not be initially presented as open.</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=35748#respond' onclick='return addComment.moveForm( "div-comment-35748", "35748", "respond", "3558" )' aria-label='Reply to Steve Faulkner'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1 parent" id="comment-35754">
+				<div id="div-comment-35754" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/96c2097ecdde44cefbb7e08f4f273649?s=48&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/96c2097ecdde44cefbb7e08f4f273649?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn">Ian Yang</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-35754">
+			July 1, 2013 at 2:34 pm</a>		</div>
+
+		<p>What I said is &#8220;should not <em>or no need to</em> be seen&#8221;.</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=35754#respond' onclick='return addComment.moveForm( "div-comment-35754", "35754", "respond", "3558" )' aria-label='Reply to Ian Yang'>Reply</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment byuser comment-author-stevef odd alt depth-2" id="comment-35756">
+				<div id="div-comment-35756" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://2.gravatar.com/avatar/81d4896889881ab794df2415b6de3a37?s=48&#038;d=mm&#038;r=g' srcset='http://2.gravatar.com/avatar/81d4896889881ab794df2415b6de3a37?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn"><a href='http://www.paciellogroup.com/blog/' rel='external nofollow' class='url'>Steve Faulkner</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-35756">
+			July 1, 2013 at 2:50 pm</a>		</div>
+
+		<p>Ian, disclosure widgets abound in Mac OS, sometimes there initial state is open. Your narrow interpretation of uses for details is not reflected in its definition.</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=35756#respond' onclick='return addComment.moveForm( "div-comment-35756", "35756", "respond", "3558" )' aria-label='Reply to Steve Faulkner'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-35760">
+				<div id="div-comment-35760" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/96c2097ecdde44cefbb7e08f4f273649?s=48&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/96c2097ecdde44cefbb7e08f4f273649?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn">Ian Yang</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-35760">
+			July 1, 2013 at 3:50 pm</a>		</div>
+
+		<p>Steve, thanks for the info about the widget in Mac OS. Yet <a href="http://en.wikipedia.org/wiki/Disclosure_widget" rel="nofollow">Wikipedia&#8217;s explanations</a> suggests that the widgets hides contents by default.</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=35760#respond' onclick='return addComment.moveForm( "div-comment-35760", "35760", "respond", "3558" )' aria-label='Reply to Ian Yang'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1" id="comment-43485">
+				<div id="div-comment-43485" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/045bbf2e6beadd94b643b688cf46b16c?s=48&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/045bbf2e6beadd94b643b688cf46b16c?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn">Dr Clue</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-43485">
+			December 11, 2013 at 8:34 am</a>		</div>
+
+		<p>Probably was already offered as a possibility for a feature test, but being on a tablet at the moment it was a little awkward to check, but this might be useful as a test expression </p>
+<p>&#8216;open&#8217; in document.createElement(&#8216;details&#8217;)</p>
+<p>I mention it because it seemed someone mentioned there might be some issue with testing for but the element alone</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=43485#respond' onclick='return addComment.moveForm( "div-comment-43485", "43485", "respond", "3558" )' aria-label='Reply to Dr Clue'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1 parent" id="comment-125033">
+				<div id="div-comment-125033" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/97932d32e5686facea6acc261ac2ae37?s=48&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/97932d32e5686facea6acc261ac2ae37?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn"><a href='http://tanglemedia.net' rel='external nofollow' class='url'>Charleston Olaes</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-125033">
+			July 16, 2014 at 7:29 pm</a>		</div>
+
+		<p>quick note : the link for the modernizr snippet has changed from</p>
+<p><a href="https://github.com/Modernizr/Modernizr/blob/master/feature-detects/elem-details.js" rel="nofollow"><br />
+</a><a href="https://github.com/Modernizr/Modernizr/blob/master/feature-detects/elem-details.js" rel="nofollow">https://github.com/Modernizr/Modernizr/blob/master/feature-detects/elem-details.js</a><br />
+</p>
+<p>to</p>
+<p><a href="https://github.com/Modernizr/Modernizr/blob/master/feature-detects/elem/details.js" rel="nofollow"><br />
+</a><a href="https://github.com/Modernizr/Modernizr/blob/master/feature-detects/elem/details.js" rel="nofollow">https://github.com/Modernizr/Modernizr/blob/master/feature-detects/elem/details.js</a><br />
+</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=125033#respond' onclick='return addComment.moveForm( "div-comment-125033", "125033", "respond", "3558" )' aria-label='Reply to Charleston Olaes'>Reply</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment byuser comment-author-stevef odd alt depth-2" id="comment-126807">
+				<div id="div-comment-126807" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://2.gravatar.com/avatar/81d4896889881ab794df2415b6de3a37?s=48&#038;d=mm&#038;r=g' srcset='http://2.gravatar.com/avatar/81d4896889881ab794df2415b6de3a37?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn"><a href='http://www.paciellogroup.com/blog/' rel='external nofollow' class='url'>Steve Faulkner</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-126807">
+			July 17, 2014 at 8:45 am</a>		</div>
+
+		<p>thanks fixed!</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=126807#respond' onclick='return addComment.moveForm( "div-comment-126807", "126807", "respond", "3558" )' aria-label='Reply to Steve Faulkner'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1 parent" id="comment-498038">
+				<div id="div-comment-498038" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/3c2bf7f3a90f62cfaf1fae5a0f52aba3?s=48&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/3c2bf7f3a90f62cfaf1fae5a0f52aba3?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn">Jesse</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-498038">
+			October 4, 2014 at 11:19 pm</a>		</div>
+
+		<p>I&#8217;m trying to utilize the details element but I&#8217;m not a fan of the highlight it gets when clicked on.  I&#8217;ve tried several things with CSS but can&#8217;t seem to remove it.  Any ideas?</p>
+<p>My latest (failed attempt):</p>
+<p><code><br />
+details[tabindex]:focus {<br />
+  outline-style: none !important;<br />
+}</code></p>
+<p>details[tabindex]:active {<br />
+  outline-style: none !important;<br />
+}<br />
+</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=498038#respond' onclick='return addComment.moveForm( "div-comment-498038", "498038", "respond", "3558" )' aria-label='Reply to Jesse'>Reply</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment byuser comment-author-brucel odd alt depth-2" id="comment-580188">
+				<div id="div-comment-580188" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/6f3ec7315ad0715ae2a5f89a52877218?s=48&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/6f3ec7315ad0715ae2a5f89a52877218?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn"><a href='http://www.brucelawson.co.uk' rel='external nofollow' class='url'>Bruce Lawson</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-580188">
+			October 14, 2014 at 11:28 am</a>		</div>
+
+		<p>probably use a web component to re-style it. But why? If every details element looks the same across sites, the user knows how it operates (same as form fields). Why potentially damage usability?</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=580188#respond' onclick='return addComment.moveForm( "div-comment-580188", "580188", "respond", "3558" )' aria-label='Reply to Bruce Lawson'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-584570">
+				<div id="div-comment-584570" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/3c2bf7f3a90f62cfaf1fae5a0f52aba3?s=48&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/3c2bf7f3a90f62cfaf1fae5a0f52aba3?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn">Jesse</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-584570">
+			October 15, 2014 at 1:10 am</a>		</div>
+
+		<p>Hi Bruce. Before I go further, I just want to say I&#8217;m a fan of your writing.  I enjoy your direct and meaningful course of thinking about all things web.</p>
+<p>&#8212; onward &#8212; </p>
+<p>There might be accessibility issues (maybe usability as well) in doing so, but I wanted to know how to style the highlight only because I found the browser default not appropriate in an experimental situation where it just didn&#8217;t look right.  I&#8217;ve since been informed that to accomplish what I was looking to do, I needed to target the summary element, not the details one (strangely?).</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=584570#respond' onclick='return addComment.moveForm( "div-comment-584570", "584570", "respond", "3558" )' aria-label='Reply to Jesse'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1 parent" id="comment-1749893">
+				<div id="div-comment-1749893" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/cb89faca3d25d3e0cc1438bed784495a?s=48&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/cb89faca3d25d3e0cc1438bed784495a?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn"><a href='http://www.svachon.com/' rel='external nofollow' class='url'>Steven Vachon</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-1749893">
+			March 18, 2015 at 6:36 pm</a>		</div>
+
+		<p>Nearly 4 years after this article was written, Webkit-based browsers are still the only ones that support the element.</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=1749893#respond' onclick='return addComment.moveForm( "div-comment-1749893", "1749893", "respond", "3558" )' aria-label='Reply to Steven Vachon'>Reply</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment even depth-2" id="comment-2134303">
+				<div id="div-comment-2134303" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/3c2bf7f3a90f62cfaf1fae5a0f52aba3?s=48&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/3c2bf7f3a90f62cfaf1fae5a0f52aba3?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn">Jesse</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-2134303">
+			July 28, 2016 at 6:36 pm</a>		</div>
+
+		<p>Steven, it looks like Safari (desktop only) supports it, also, but Firefox and IE/Edge don&#8217;t at this time.</p>
+<p><a href="http://caniuse.com/#search=details" rel="nofollow">http://caniuse.com/#search=details</a></p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=2134303#respond' onclick='return addComment.moveForm( "div-comment-2134303", "2134303", "respond", "3558" )' aria-label='Reply to Jesse'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-2134300">
+				<div id="div-comment-2134300" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/cb89faca3d25d3e0cc1438bed784495a?s=48&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/cb89faca3d25d3e0cc1438bed784495a?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn"><a href='https://www.svachon.com/' rel='external nofollow' class='url'>Steven Vachon</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-2134300">
+			July 28, 2016 at 5:52 pm</a>		</div>
+
+		<p>How does the <code>&lt;summary&gt;</code> element compare to <code>&lt;h1&gt;</code>–<code>&lt;h6&gt;</code> header elements?</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=2134300#respond' onclick='return addComment.moveForm( "div-comment-2134300", "2134300", "respond", "3558" )' aria-label='Reply to Steven Vachon'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-2167338">
+				<div id="div-comment-2167338" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/cb89faca3d25d3e0cc1438bed784495a?s=48&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/cb89faca3d25d3e0cc1438bed784495a?s=96&amp;d=mm&amp;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />			<cite class="fn"><a href='https://www.svachon.com/' rel='external nofollow' class='url'>Steven Vachon</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://html5doctor.com/the-details-and-summary-elements/#comment-2167338">
+			February 14, 2017 at 7:30 pm</a>		</div>
+
+		<p>Firefox supports <code>&lt;details&gt;</code> now, since v49.</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://html5doctor.com/the-details-and-summary-elements/?replytocom=2167338#respond' onclick='return addComment.moveForm( "div-comment-2167338", "2167338", "respond", "3558" )' aria-label='Reply to Steven Vachon'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+
+ 
+
+
+<div id="form">
+
+<h3>Join the discussion.</h3>
+
+<div class="cancel-comment-reply">
+	<small><a rel="nofollow" id="cancel-comment-reply-link" href="/the-details-and-summary-elements/#respond" style="display:none;">Click here to cancel reply.</a></small>
+</div>
+
+
+<form action="http://html5doctor.com/wp-comments-post.php" method="post" id="commentform">
+
+
+<p>
+<label for="author">Name (required)</label><input type="text" name="author" id="author" value="" size="22" tabindex="1" aria-required="true" required />
+</p>
+
+<p>
+<label for="email">Mail (will not be published) (required)</label><input type="email" name="email" id="email" value="" size="22" tabindex="2" aria-required="true" required />
+</p>
+
+<p>
+<label for="url">Website</label><input type="url" name="url" id="url" value="" size="22" tabindex="3" />
+</p>
+
+
+<!--<p><small><strong>XHTML:</strong> You can use these tags: <code>&lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;s&gt; &lt;strike&gt; &lt;strong&gt; </code></small></p>-->
+<div id="form-code">
+    <h4>Some HTML is ok</h4>
+    <p>You can use these tags:<br><code><span class="tag">&lt;a </span><span class="atn">href</span><span class="tag">=</span><span class="atv">""</span><span class="tag"> </span><span class="atn">title</span><span class="tag">=</span><span class="atv">""</span><span class="tag">&gt;</span></code><br> <code><span class="tag">&lt;abbr </span><span class="atn">title</span><span class="tag">=</span><span class="atv">""</span><span class="tag">&gt;</span></code><br> <code><span class="tag">&lt;b&gt;</span></code><br> <code><span class="tag">&lt;blockquote </span><span class="atn">cite</span><span class="tag">=</span><span class="atv">""</span><span class="tag">&gt;</span></code><br> <code><span class="tag">&lt;cite&gt;</span></code><br> <code><span class="tag">&lt;del </span><span class="atn">datetime</span><span class="tag">=</span><span class="atv">""</span><span class="tag">&gt;</span></code><br> <code><span class="tag">&lt;em&gt;</span></code><br> <code><span class="tag">&lt;i&gt;</span></code><br> <code><span class="tag">&lt;q </span><span class="atn">cite</span><span class="tag">=</span><span class="atv">""</span><span class="tag">&gt;</span></code><br> <code><span class="tag">&lt;strong&gt;</span></code></p><p>You can also use <code><span class="tag">&lt;code&gt;</span></code>, and <strong>remember to use <code><span class="pun">&amp;</span><span class="pln">lt</span><span class="pun">;</span></code> and <code><span class="pun">&amp;</span><span class="pln">gt</span><span class="pun">;</span></code> for brackets</strong>.</p>
+</div>
+<p><label class="screenreader" for="comment">Enter comment</label>
+<textarea aria-required="true" required name="comment" id="comment" cols="100%" rows="10" tabindex="4"></textarea></p>
+
+<p><input name="submit" type="submit" id="submit" tabindex="5" value="Submit Comment" />
+<input type='hidden' name='comment_post_ID' value='3558' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p>
+<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="a5f5666efb" /></p>
+
+	<p style="clear: both;" class="subscribe-to-comments">
+	<input type="checkbox" name="subscribe" id="subscribe" value="subscribe" style="width: auto;" />
+	<label for="subscribe">Notify me of followup comments via e-mail</label>
+	</p>
+
+
+<p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="164"/></p>
+</form>
+
+</div>
+
+            </section>
+                <!-- end #comments -->
+                
+        </article>
+        <!-- end .post -->
+    </div>
+    <!-- end .main -->	
+                    
+ 	     <aside class="secondary">
+            
+        <section class="mod ads">
+            <h3>Element Index</h3>
+            <a href="/element-index/"><img src="http://html5doctor.com/wp-content/themes/html5doctor2/images/element-index.png" width="260" height="158" alt="View the HTML5 Element Index" /></a>
+        </section>
+        <!-- end nav -->
+            
+		            <aside class="mod ads group">
+                <h3>Sponsors</h3>
+                <div id="bsap_1242929" class="bsarocks bsap_ab161e2bf71edb940eeca26a4739f522"></div>
+            </aside>        
+		                       <!-- end nav -->
+        
+        <nav class="ui-tabs mod">
+          <h3>More HTML5 Doctor</h3>
+          <ul class="ui-tabs-nav group">
+            <li class="ui-tabs-selected"><a href="#articles">Articles</a></li>
+            <li class="ui-tab"><a href="#categories">Categories</a></li>
+            <li class="ui-tab"><a href="#authors">Authors</a></li>
+          </ul>
+          
+          <div class="tab" id="articles">
+              <ul>
+			<li><a href='http://html5doctor.com/computer-says-no-to-html5-document-outline/'>Computer says NO to HTML5 document outline</a></li>
+	<li><a href='http://html5doctor.com/the-woes-of-date-input/'>The woes of date input</a></li>
+	<li><a href='http://html5doctor.com/html-developers-please-consider/'>HTML Developers: Please Consider</a></li>
+	<li><a href='http://html5doctor.com/on-html-belts-and-aria-braces/'>On HTML belts and ARIA braces (The Default Implicit ARIA semantics they didn&#8217;t want you to know about)</a></li>
+	<li><a href='http://html5doctor.com/html5-check-it-before-you-wreck-it-with-miketm-smith/'>HTML5 &#8211; Check it Before you Wreck it with Mike[tm] Smith</a></li>
+              </ul>
+              <p class="btn"><a href="/article-archive/">View article archive</a></p>
+          </div>
+
+
+          <div class="tab" id="categories">
+                <ul>
+                    	<li class="cat-item cat-item-6"><a href="http://html5doctor.com/category/accessibility/" >Accessibility</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="http://html5doctor.com/category/attributes/" >Attributes</a>
+</li>
+	<li class="cat-item cat-item-33"><a href="http://html5doctor.com/category/boilerplates/" >Boilerplates</a>
+</li>
+	<li class="cat-item cat-item-17"><a href="http://html5doctor.com/category/browser-compatibility/" >Browser Compatibility</a>
+</li>
+	<li class="cat-item cat-item-69"><a href="http://html5doctor.com/category/comment/" >Comment</a>
+</li>
+	<li class="cat-item cat-item-43"><a href="http://html5doctor.com/category/css/" >CSS</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="http://html5doctor.com/category/elements/" >Elements</a>
+</li>
+	<li class="cat-item cat-item-103"><a href="http://html5doctor.com/category/events/" >Events</a>
+</li>
+	<li class="cat-item cat-item-108"><a href="http://html5doctor.com/category/forms/" >forms</a>
+</li>
+	<li class="cat-item cat-item-380"><a href="http://html5doctor.com/category/interviews/" >interviews</a>
+</li>
+	<li class="cat-item cat-item-18"><a href="http://html5doctor.com/category/javascript-apis/" >JavaScript APIs</a>
+</li>
+	<li class="cat-item cat-item-51"><a href="http://html5doctor.com/category/marketing/" >Marketing</a>
+</li>
+	<li class="cat-item cat-item-132"><a href="http://html5doctor.com/category/misc/" >Misc</a>
+</li>
+	<li class="cat-item cat-item-128"><a href="http://html5doctor.com/category/multimedia/" >multimedia</a>
+</li>
+	<li class="cat-item cat-item-21"><a href="http://html5doctor.com/category/questions/" >Questions</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://html5doctor.com/category/quick-tips/" >Quick Tips</a>
+</li>
+	<li class="cat-item cat-item-135"><a href="http://html5doctor.com/category/reviews/" >Reviews</a>
+</li>
+	<li class="cat-item cat-item-145"><a href="http://html5doctor.com/category/simplequiz/" >Simplequiz</a>
+</li>
+	<li class="cat-item cat-item-68"><a href="http://html5doctor.com/category/specification-changes/" >Specification Changes</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="http://html5doctor.com/category/structure/" >Structure</a>
+</li>
+	<li class="cat-item cat-item-38"><a href="http://html5doctor.com/category/validation/" >Validation</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="http://html5doctor.com/category/wai-aria/" >WAI-ARIA</a>
+</li>
+ 
+                </ul>
+          </div>
+          <div class="tab" id="authors">
+                <ul>
+                    <li><a href="http://html5doctor.com/author/alexg/" title="Posts by Alex Gibson">Alex Gibson</a></li><li><a href="http://html5doctor.com/author/brucel/" title="Posts by Bruce Lawson">Bruce Lawson</a></li><li><a href="http://html5doctor.com/author/cennyddb/" title="Posts by Cennydd Bowles">Cennydd Bowles</a></li><li><a href="http://html5doctor.com/author/chrisb/" title="Posts by Chris Bewick">Chris Bewick</a></li><li><a href="http://html5doctor.com/author/derekj/" title="Posts by Derek Johnson">Derek Johnson</a></li><li><a href="http://html5doctor.com/author/iand/" title="Posts by Ian Devlin">Ian Devlin</a></li><li><a href="http://html5doctor.com/author/jacko/" title="Posts by Jack Osborne">Jack Osborne</a></li><li><a href="http://html5doctor.com/author/markb/" title="Posts by Mark Boas">Mark Boas</a></li><li><a href="http://html5doctor.com/author/miker/" title="Posts by Mike Robinson">Mike Robinson</a></li><li><a href="http://html5doctor.com/author/olib/" title="Posts by Oli Studholme">Oli Studholme</a></li><li><a href="http://html5doctor.com/author/peterg/" title="Posts by Peter Gasston">Peter Gasston</a></li><li><a href="http://html5doctor.com/author/remys/" title="Posts by Remy Sharp">Remy Sharp</a></li><li><a href="http://html5doctor.com/author/richc/" title="Posts by Richard Clark">Richard Clark</a></li><li><a href="http://html5doctor.com/author/stevef/" title="Posts by Steve Faulkner">Steve Faulkner</a></li><li><a href="http://html5doctor.com/author/taba/" title="Posts by Tab Atkins Jnr">Tab Atkins Jnr</a></li><li><a href="http://html5doctor.com/author/toml/" title="Posts by Tom Leadbetter">Tom Leadbetter</a></li>            	            	
+                </ul>
+          </div>
+        </nav>
+        <!-- end .mod -->
+        
+        <section class="ads mod">
+          <h3>Submit your site to the Gallery</h3>
+          <a href="http://html5gallery.com/"><img src="http://html5doctor.com/wp-content/themes/html5doctor2/images/the-gallery.png" alt="HTML5 Gallery" style="width:93%;" /></a>
+        </section>
+        <!-- end .mod --> 
+                 
+	<div class="mod">
+         	<h3><a href="http://thewebevolved.com">Beginning HTML5 &amp; CSS3</a></h3> 
+		<a href="http://thewebevolved.com">
+			<img class="book" src="/wp-content/uploads/2013/01/web-evolved.jpg" alt="Cover image of Beginning HTML5 and CSS3: The Web Evolved.">
+		</a>
+		<p>The Web Evolved: A new book on HTML5 &amp; CSS3 by Richard Clark, Oli Studholme, Christopher Murphy and Divya Manian.</p>
+		<p><a class="btn" href="http://thewebevolved.com">Buy it now</a></p>
+	</div>      
+		
+    </aside>
+    <!-- end .secondary -->                   
+        <aside id="sub-footer" class="sub-footer group">
+        <div>
+            <div class="mod">
+                                <div id="crp_related" class="crp_related"><h3>Related Posts:</h3><ul class="related"><li><a href="http://html5doctor.com/computer-says-no-to-html5-document-outline/"     class="crp_title">Computer says NO to HTML5 document outline</a></li></ul><div class="crp_clear"></div></div>                        
+            </div><!-- end .mod -->
+            <div class="mod">
+                <h3>Recent Posts</h3>
+                <ul class="related">
+                                                        <li><a href="http://html5doctor.com/computer-says-no-to-html5-document-outline/">Computer says NO to HTML5 document outline</a></li>
+                                        <li><a href="http://html5doctor.com/the-woes-of-date-input/">The woes of date input</a></li>
+                                        <li><a href="http://html5doctor.com/html-developers-please-consider/">HTML Developers: Please Consider</a></li>
+                                        <li><a href="http://html5doctor.com/on-html-belts-and-aria-braces/">On HTML belts and ARIA braces (The Default Implicit ARIA semantics they didn&#8217;t want you to know about)</a></li>
+                                        <li><a href="http://html5doctor.com/html5-check-it-before-you-wreck-it-with-miketm-smith/">HTML5 &#8211; Check it Before you Wreck it with Mike[tm] Smith</a></li>
+                                                </ul>
+            </div><!-- end .mod -->
+        </div> 
+        <!-- end div -->
+        <div class="ads">
+            <div class="mod">
+                <h3>Recommended</h3>
+                <a href="http://introducinghtml5.com"><img src="http://html5doctor.com/wp-content/themes/html5doctor/img/introducing-html5-ad.jpg" alt="Introducing HTML5 Book by Bruce Lawson and Remy Sharp" /></a>
+                <p class="btn"><a href="http://introducinghtml5.com">Buy this book</a></p>
+            </div>
+        </div>
+        <!-- end .ads -->
+    </aside>
+    <!-- end #sub-footer -->
+	
+
+    
+</main>
+<!-- end #content -->
+
+<footer role="contentinfo">
+	<div class="inner">
+    	<img width="64" height="64" class="w3c-logo" alt="W3C HTML5 logo (not CSS3!)" src="http://html5doctor.com/wp-content/themes/html5doctor2/images/HTML5_Badge_64.png">
+		<p id="copyright">This site is licensed under a <a href="http://creativecommons.org/licenses/by-nc/2.0/uk/" rel="license">Creative Commons Attribution-Non-Commercial 2.0</a> share alike license. Feel free to change, reuse modify and extend it. Some authors will retain their copyright on certain articles.</p>
+        <p>Copyright &copy; 2019 HTML5 Doctor. All rights reserved. Hosted by <a href="http://www.mediatemple.net/go/order/?refdom=richclarkdesign.com">(mt) Media Temple</a>. Branding by <a href="http://olik.co.uk/">Oliver Ker</a>.</p>
+	</div>
+    <!-- end .inner -->
+</footer>
+<!-- end footer -->
+
+    <!-- BuySellAds.com Ad Code -->
+    <script>
+    (function(){
+      var bsa = document.createElement('script');
+         bsa.type = 'text/javascript';
+         bsa.async = true;
+         bsa.src = '//s3.buysellads.com/ac/bsa.js';
+      (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
+    })();
+    </script>
+    <!-- END BuySellAds.com Ad Code -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+	<!-- TODO: move scripts in head to before /body —oli -->
+	   
+	<script src="http://html5doctor.com/wp-content/themes/html5doctor2/js/searchhi.js"></script>    
+	<script src="http://html5doctor.com/wp-content/themes/html5doctor2/js/prettify.js"></script>    
+	<script src="http://html5doctor.com/wp-content/themes/html5doctor2/js/master.js"></script>    
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-8916679-1']);
+  _gaq.push(['_setDomainName', 'html5doctor.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<script async type="text/javascript" src="//cdn.fancybar.net/ac/fancybar.js?zoneid=1502&serve=C6ADVKE&placement=html5doctor" id="_fancybar_js"></script>
+</body>
+</html>
+<!-- Dynamic page generated in 1.753 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2019-03-22 21:08:09 -->
+
+<!-- super cache -->
