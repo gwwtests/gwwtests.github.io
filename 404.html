@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Directory Listing</title>
+</head>
+<body>
+  <h1>Directory Listing</h1>
+  <div id="listing"></div>
+
+  <script>
+    const apiBase = "https://api.github.com/repos/gwwtests/gwwtests.github.io/contents";
+
+    function listDirectory(path) {
+      fetch(`${apiBase}${path}`)
+        .then(response => response.json())
+        .then(data => {
+          let output = "<ul>";
+          data.forEach(file => {
+            output += `<li><a href="${file.path}">${file.name}</a></li>`;
+          });
+          output += "</ul>";
+          document.getElementById("listing").innerHTML = output;
+        });
+    }
+
+    function directoryFromURL() {
+      const urlPath = location.pathname.replace("/gwwtests.github.io", "");
+      return urlPath.endsWith("/") ? urlPath : urlPath + "/";
+    }
+
+    listDirectory(directoryFromURL());
+  </script>
+</body>
+</html>
