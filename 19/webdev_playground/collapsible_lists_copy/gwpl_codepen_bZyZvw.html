@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Details/summary opened with anchor via javascript</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<script language='JavaScript' type='text/JavaScript'>
+function MakeArrayOfAllPrefixes(str){
+  //console.log("MakeArrayOfAllPrefixes("+str+")");
+  var prefixes = [];
+  for (var i=1; i<=str.length; i++){
+    prefixes.push(str.substr(0,i));
+  }
+  console.log("MakeArrayOfAllPrefixes("+str+") -> returns [" + prefixes + "]");
+  return prefixes;
+}
+
+function SetOpenAttrForIdsAndPrefixes(ids, openAttrBool){
+  $('details').attr('open',false); // close all others first
+  console.log("SetOpenAttrForIds([" +ids+"], "+openAttrBool+")");
+  for (idindex in ids) {
+    var id = ids[idindex];
+    if (id != ""){
+      var prefixes = MakeArrayOfAllPrefixes(id);
+      for (prefixidx in prefixes) {
+        var prefix = prefixes[prefixidx];
+        if(openAttrBool==true) { operationstr="Opening"; } else { operationstr="Closing"};
+        console.log(operationstr+" <details id='#"+prefix+"'> with $('#"+prefix+").attr('open',"+openAttrBool+");");
+        $('#'+prefix).attr('open',openAttrBool);
+      }
+    }
+  }
+}
+
+function SetOpenAttrForIdsAndPrefixesFromLocationHash(){
+  var hashes = $(location).attr('hash').split('#'); 
+  SetOpenAttrForIdsAndPrefixes(hashes, true); 
+}
+
+$(document).ready(function(){
+  SetOpenAttrForIdsAndPrefixesFromLocationHash();
+
+  if ("onhashchange" in window) {// does the browser support the hashchange event?
+      window.onhashchange = function () {
+         SetOpenAttrForIdsAndPrefixesFromLocationHash();
+      }
+  }
+});
+</script>
+
+</head>
+<body>
+  
+<p>
+Opens details/summeries, all parths, using prefixes. Supports multiple anchors in url, example:
+</p>
+
+<ul>
+  <li><a href="#Q0A0#Q1A">#Q0A0#Q1A</a>,</li>
+  <li><a href="#Q0B#Q0C#Q1B#Q1C">#Q0B#Q0C#Q1A#Q1C</a>.</li>
+</ul>
+
+<p>
+ (to make it work in codepen use full path: <a target="_top"  href="https://codepen.io/gwpl/pen/bZyZvw#Q0A0#Q1A">https://codepen.io/gwpl/pen/bZyZvw#Q0A0#Q1A</a>)
+</p>
+   
+<p>
+references:
+<a href="https://webdesign.tutsplus.com/tutorials/explaining-the-details-and-summary-elements--cms-21999">1</a>,
+<a href="https://stackoverflow.com/a/48258026/544721">2</a>,
+<a href="https://stackoverflow.com/q/55308339/544721">3</a>,
+<a href="https://stackoverflow.com/q/3552944/544721">4</a>,
+  <a href="https://stackoverflow.com/q/2161906/544721">5</a>.
+</p>
+  
+<ul>
+<li><details id="Q0"><summary>Q0</summary>
+  <ul>
+    <li><details id="Q0A"><summary>Q0A</summary>
+      <ul>
+        <li><details id="Q0A0"><summary>Q0A0</summary><a href="#Q0A0">Answer to Q0A0</a></details></li>
+        <li><details id="Q0A1"><summary>Q0A1</summary><a href="#Q0A1">Answer to Q0A1</a></details></li>
+        <li><details id="Q0A2"><summary>Q0A2</summary><a href="#Q0A2">Answer to Q0A2</a></details></li>
+      </ul>
+      </details>
+    </li>
+    <li><details id="Q0B"><summary>Q0B</summary><a href="#Q0B">Answer to Q0B</a></details></li>
+    <li><details id="Q0C"><summary>Q0C</summary><a href="#Q0C">Answer to Q0C</a></details></li>
+  </ul>    
+  </details>
+</li>
+<li><details id="Q1"><summary>Q1</summary>
+  <ul>
+    <li><details id="Q1A"><summary>Q1A</summary><a href="#Q1A">Answer to Q1A</a></details></li>
+    <li><details id="Q1B"><summary>Q1B</summary><a href="#Q1B">Answer to Q1B</a></details></li>
+    <li><details id="Q1C"><summary>Q1C</summary><a href="#Q1C">Answer to Q1C</a></details></li>
+  </ul>    
+  </details>
+</li>
+</ul>
+
+
+</body>
+</html>
+ 

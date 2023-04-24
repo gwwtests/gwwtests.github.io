@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Collapsible html</title>
+</head>
+<body>
+
+<p>Details and summary example:</p>
+
+<details>
+  <summary>See More</summary>
+  This text will be hidden if your browser supports it.
+</details>
+
+<p>Details and summary inside details and summary:</p>
+
+<details>
+  <summary>See More</summary>
+  This text will be hidden if your browser supports it.
+  <details>
+    <summary>See More</summary>
+    This text will be hidden if your browser supports it.
+  </details>
+</details>
+
+<p>Simple list with summary and details:</p>
+
+<ul>
+<li id="Q0"><details><summary>Q0</summary>
+  <ul>
+    <li id="Q0A"><details><summary>Q0A</summary>
+      <ul>
+        <li id="Q0A0">Q0A0</li>
+        <li>Q0A1</li>
+        <li>Q0A2</li>
+      </ul>
+      </details>
+    </li>
+    <li id="Q0B">Q0B</li>
+    <li id="Q0C">Q0C</li>
+  </ul>    
+  </details>
+</li>
+<li id="Q1"><details><summary>Q1</summary>
+  <ul>
+    <li id="Q1A">Q1A</li>
+    <li id="Q1B">Q1B</li>
+    <li id="Q1C">Q1C</li>
+  </ul>    
+  </details>
+</li>
+</ul>
+
+
+<p>Lists combined with summary and details:</p>
+
+<ul>
+<li><details><summary>Q0</summary>
+  <ul>
+    <li><details><summary>Q0A</summary>
+      <ul>
+        <li>Q0A0</li>
+        <li>Q0A1</li>
+        <li>Q0A2</li>
+      </ul>
+      </details>
+    </li>
+    <li>Q0B</li>
+    <li>Q0C</li>
+  </ul>    
+  </details>
+</li>
+<li><details><summary>Q1</summary>
+  <ul>
+    <li>Q1A</li>
+    <li>Q1B</li>
+    <li>Q1C</li>
+  </ul>    
+  </details>
+</li>
+<li>Q2</li>
+</ul>
+
+</body>
+</html>
