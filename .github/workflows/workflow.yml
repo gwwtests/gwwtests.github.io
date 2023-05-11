@@ -2,15 +2,14 @@ name: directory-listing
 on: [push]
 
 jobs:
-  Job-Convert-Markdown-to-HTML:
-    runs-on: windows-latest
-    steps:
-      - name: Markdown to HTML with GitHub Style
-        uses: natescherer/markdown-to-html-with-github-style-action@v1.1.0
-
-        with:
-          path: README.md,CHANGELOG.md,docs\doc1.md
-          outputpath: out
+  markdown-to-html:
+    - name: Converts Markdown to HTML
+      uses: jaywcjlove/markdown-to-html-cli@main
+      with:
+        source: README-zh.md
+        output: coverage/action.html
+        github-corners: https://github.com/jaywcjlove/markdown-to-html-cli
+        favicon: data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text></svg>
   pages-directory-listing:
     runs-on: ubuntu-latest
     name: Directory Listings Index
