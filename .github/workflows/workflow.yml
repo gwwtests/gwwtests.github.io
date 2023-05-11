@@ -12,12 +12,7 @@ jobs:
           ref: main         #checkout different branch
 
       - name: Convert Markdown to HTML
-        uses: jaywcjlove/markdown-to-html-cli@main
-        with:
-          source: README.md
-          output: coverage/README.html
-          github-corners: https://github.com/jaywcjlove/markdown-to-html-cli
-          favicon: data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text></svg>
+        uses: gwwtests/simple-markdown-to-html-github-action@main
 
       - name: Generate Directory Listings
         uses: jayanta525/github-pages-directory-listing@v3.0.0
