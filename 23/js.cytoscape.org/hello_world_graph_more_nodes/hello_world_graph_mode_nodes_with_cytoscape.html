@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Interactive Graph Visualization</title>
+  <script src="https://unpkg.com/cytoscape@3.19.1/dist/cytoscape.min.js"></script>
+  <style>
+    #cy {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="cy"></div>
+  <script>
+document.addEventListener('DOMContentLoaded', function () {
+  // Define the initial node data
+  const initialNode = {
+    id: '1',
+    label: 'Start',
+  };
+
+  // Create the Cytoscape instance
+  const cy = cytoscape({
+    container: document.getElementById('cy'),
+    elements: [
+      {
+        data: initialNode,
+      },
+    ],
+      /*
+    style: [ // Simple Circle Style, but text now always fits
+      {
+        selector: 'node',
+        style: {
+          'label': 'data(label)',
+          'text-valign': 'center',
+          'text-halign': 'center',
+          'background-color': '#11479e',
+          'color': '#fff',
+          'font-size': 12,
+        },
+      },
+      */
+     /* 
+style: [  // Style so text wraps
+  {
+    selector: 'node',
+    style: {
+      'label': 'data(label)',
+      'text-valign': 'center',
+      'text-halign': 'center',
+      'text-wrap': 'wrap',
+      'text-max-width': '75px', // Adjust this value to control the maximum width of the text
+      'background-color': '#11479e',
+      'color': '#fff',
+      'font-size': 12,
+      'shape': 'ellipse', // Use 'ellipse' for circular nodes; you can also use 'round-rectangle' for rectangular nodes with rounded corners
+      'width': '100px',
+      'height': '100px',
+    },
+  },
+],      
+    */
+    style: [ // Trying to apply lessons from GPT4
+      {
+        selector: 'node',
+        style: {
+          'label': 'data(label)',
+          'text-valign': 'center',
+          'text-halign': 'center',
+      'text-wrap': 'wrap',
+      'text-max-width': '75px', // Adjust this value to control the maximum width of the text
+          'background-color': '#11479e',
+          'color': '#fff',
+          'font-size': 12,
+      'shape': 'round-rectangle', // Use 'ellipse' for circular nodes; you can also use 'round-rectangle' for rectangular nodes with rounded corners
+      'width': '100px',
+      'height': '100px',
+        },
+      },
+    ],
+    layout: {
+      name: 'grid',
+    },
+  });
+
+  // Function to add adjacent nodes
+function addAdjacentNodes(node) {
+  const nodeId = node.id();
+  const numNewNodes = Math.floor(Math.random() * 6) + 1;
+
+  for (let i = 0; i < numNewNodes; i++) {
+    const newNodeId = parseInt(nodeId) * 10 + (i + 1);
+    const existingNode = cy.getElementById(newNodeId);
+
+    if (existingNode.length === 0) {
+      cy.add([
+        { data: { id: newNodeId, label: `Node ${newNodeId}` } },
+        { data: { id: `${nodeId}-${newNodeId}`, source: nodeId, target: newNodeId } },
+      ]);
+    }
+  }
+
+  cy.layout({
+    name: 'cose',
+  }).run();
+}
+  
+
+  // Add event listener for node clicks
+  cy.on('tap', 'node', function (evt) {
+    const node = evt.target;
+    addAdjacentNodes(node);
+  });
+});
+  </script>
+</body>
+</html>
+ 
