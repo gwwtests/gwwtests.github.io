@@ -6,6 +6,9 @@ jobs:
     runs-on: ubuntu-latest
     name: Directory Listings Index
     steps:
+      - name: Markdown to HTML
+        uses: lifepal/markdown-to-html@v1.2
+
       - name: Checkout Repository
         uses: actions/checkout@v3
         with:
