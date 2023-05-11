@@ -2,13 +2,19 @@ name: directory-listing
 on: [push]
 
 jobs:
+  Job-Convert-Markdown-to-HTML:
+    runs-on: windows-latest
+    steps:
+      - name: Markdown to HTML with GitHub Style
+        uses: natescherer/markdown-to-html-with-github-style-action@v1.1.0
+
+        with:
+          path: README.md,CHANGELOG.md,docs\doc1.md
+          outputpath: out
   pages-directory-listing:
     runs-on: ubuntu-latest
     name: Directory Listings Index
     steps:
-      - name: Markdown to HTML
-        uses: lifepal/markdown-to-html@v1.2
-
       - name: Checkout Repository
         uses: actions/checkout@v3
         with:
