@@ -15,12 +15,12 @@ jobs:
         uses: gwwtests/simple-markdown-to-html-github-action@main
 
       - name: Generate Directory Listings
-        uses: jayanta525/github-pages-directory-listing@v3.0.0
+        uses: gwwtests/github-pages-directory-listing@v3.0.0
         with:
           FOLDER: '.'       #directory to generate index
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: gwwtests/upload-pages-artifact@v1
         with:
           path: '.'         # upload generated folder
   
