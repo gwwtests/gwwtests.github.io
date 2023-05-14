@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!--
+
+Prompt :
+
+Act as Wed Developer expert working on Arch Linux. Below code starts with unfolded tree, that only folds branches after clicking on any node (and does not unfold). Can you make it in a way that tree starts as folded and unfolds children of nodes after clicking them ? \`\`\` $ head -n -0 index.html code.js style.css # copied output here via | xclip -sel clip sel
+...(paste content)
+```
+
+Assistant:
+
+To make the tree initially collapsed, you can leverage the `visibility` style property provided by Cytoscape.js. By setting the initial visibility of all nodes (except for the root) and edges to `hidden`, you can achieve a collapsed tree. Then, on node click, you can make the target node and its edges along with their target nodes visible.
+
+Firstly, in the CSS section of your nodes and edges, set the visibility to `hidden`. Also, set the visibility of your root node to `visible` (assuming that the root is 'cat'):
+
+javascriptCopy code
+
+ `style: cytoscape.stylesheet()
+    .selector('node')
+      .css({
+        'height': 80,
+        'width': 80,
+        'background-fit': 'cover',
+        'border-color': '#000',
+        'border-width': 3,
+        'border-opacity': 0.5,
+        'visibility': 'hidden' // initially hidden
+      })
+    .selector('edge')
+      .css({
+        'curve-style': 'bezier',
+        'width': 6,
+        'target-arrow-shape': 'triangle',
+        'line-color': '#ffaaaa',
+        'target-arrow-color': '#ffaaaa',
+        'visibility': 'hidden' // initially hidden
+      })
+    .selector('#cat') // root node
+      .css({
+        'background-image': 'url(cat.jpg)',
+        'visibility': 'visible' // except root node
+      })
+    // ... other nodes style` 
+
+Now, in your `tap` event, make the target node and its edges along with their target nodes visible:
+
+javascriptCopy code
+
+`cy.on('tap', 'node', function(){
+  var nodes = this;
+  var edges = nodes.connectedEdges();
+  nodes.style('visibility', 'visible');
+  edges.style('visibility', 'visible');
+  edges.connectedNodes().style('visibility', 'visible');
+
+  // ... rest of your tap event code
+});` 
+
+This will hide all nodes and edges initially except for the root node (which is 'cat' in this case). Then, when a node is clicked, it will become visible along with its directly connected edges and nodes. You may need to adjust this according to your specific tree structure and requirements.
+
+
+```
+
+-->
+
+<html>
+<head>
+<link href="00_style.css" rel="stylesheet" />
+<meta charset=utf-8 />
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui">
+<title>Images</title>
+<script src="cytoscape.min.js"></script>
+</head>
+<body>
+<div id="cy"></div>
+<!-- Load application code at the end to ensure DOM is loaded -->
+<script src="02_code.js"></script>
+</body>
+</html>
