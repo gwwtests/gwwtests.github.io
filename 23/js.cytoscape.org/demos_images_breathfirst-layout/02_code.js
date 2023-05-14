@@ -71,14 +71,14 @@ var cy = cytoscape({
 
     elements: {
         nodes: [
-            {data: {id: 'cat'}},
-            {data: {id: 'bird'}},
-            {data: {id: 'ladybug'}},
-            {data: {id: 'aphid'}},
-            {data: {id: 'rose'}},
-            {data: {id: 'grasshopper'}},
-            {data: {id: 'plant'}},
-            {data: {id: 'wheat'}}
+            {data: {id: 'cat', originalPosition: null}},
+            {data: {id: 'bird', originalPosition: null}},
+            {data: {id: 'ladybug', originalPosition: null}},
+            {data: {id: 'aphid', originalPosition: null}},
+            {data: {id: 'rose', originalPosition: null}},
+            {data: {id: 'grasshopper', originalPosition: null}},
+            {data: {id: 'plant', originalPosition: null}},
+            {data: {id: 'wheat', originalPosition: null}}
         ],
         edges: [
             {data: {source: 'cat', target: 'bird'}},
@@ -94,28 +94,56 @@ var cy = cytoscape({
     layout: {
         name: 'breadthfirst',
         directed: true,
-        padding: 10
+        padding: 10,
     }
+
 }); // cy init
 
-// remember original node positions
-cy.nodes().forEach(function (node) {
-    node.data('orgPos', node.position());
+// Apply the layout after initialization
+var layout = cy.layout({
+    name: 'breadthfirst',
+    directed: true,
+    padding: 10,
 });
+
+// Run the layout and then store the original positions
+layout.run().promiseOn('layoutstop').then(function () {
+    cy.nodes().forEach(function (node) {
+        node.data('originalPosition', node.position()); // store original position
+    });
+});
+
+// // remember original node positions
+// cy.nodes().forEach(function (node) {
+//     node.data('orgPos', node.position());
+// });
 
 cy.on('tap', 'node', function () {
     var nodes = this;
     var edges = nodes.connectedEdges();
-    var connectedNodes = edges.connectedNodes();
 
-    // Check if we need to collapse or expand
-    var anyChildVisible = connectedNodes.some(function (node) {
-        return node.style('visibility') === 'visible';
+    // check if the node has any child 'hidden'
+    var hasHiddenChild = edges.connectedNodes().some(function (node) {
+        return node.style('visibility') === 'hidden';
     });
 
-    if (anyChildVisible) {
-        // Collapse (eat) operation
+    if (hasHiddenChild) {
+        // make the children visible and animate them to their original positions
+        edges.style('visibility', 'visible');
+        edges.connectedNodes().style('visibility', 'visible').animate({
+            position: function (node) { // function to return original position
+                return node.data('originalPosition');
+            }
+        }, {
+            duration: 500
+        });
+    } else {
+        // execute the eating animation
+        edges.style('visibility', 'visible');
+        edges.connectedNodes().style('visibility', 'visible');
+
         nodes.addClass('eater');
+
         var food = [];
 
         for (; ;) {
@@ -154,22 +182,14 @@ cy.on('tap', 'node', function () {
                 }, {
                     duration: duration,
                     complete: function () {
-                        thisFood.style('visibility', 'hidden');
+                        thisFood.style('visibility', 'hidden'); // hide the food instead of removing
+                        eater.removeClass('eating');
                     }
                 });
 
                 delay += duration;
             })();
         } // for
-    } else {
-        // Expand operation
-        edges.style('visibility', 'visible');
-        connectedNodes.style('visibility', 'visible');
-        connectedNodes.animate({
-            position: function (node) {
-                return node.data('orgPos');
-            }
-        });
     }
-});
+}); // on tap
 
