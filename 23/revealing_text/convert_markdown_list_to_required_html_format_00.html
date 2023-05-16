@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: 'Courier New', monospace;
+      color: #00FFFF;
+      background-color: black;
+    }
+    textarea {
+      width: 100%;
+      height: 600px;
+      margin-bottom: 10px;
+    }
+    button {
+      display: block;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+<pre>
+// TODO more testing as in parent nodes it keeps newline.
+// TODO more testing regarding styles, bold, italic, URLs etc.
+// (TODO: putting e.g. B1b into **B1b** or <pre><b>B1b</b></pre> does not work)
+</pre>
+
+<textarea id="inputArea">
+* A a
+    * A1
+    * [A2](https://www.foo.com)
+* B b
+    * B 1
+        * [B1a](https://www.bar.com)
+        * B1b
+    * B2
+* C c
+* .
+</textarea>
+  <button id="convertButton">Convert</button>
+  <textarea id="outputArea"></textarea>
+
+  <!--
+  <script src="https://cdn.jsdelivr.net/npm/markdown-it@12/dist/markdown-it.min.js"></script>  
+  <script src="https://cdn.jsdelivr.net/npm/js-beautify@latest/js/lib/beautify-html.js"></script>
+  -->
+  <script src="markdown-it.min.js"></script>
+  <script src="beautify-html.js"></script>
+  <script>
+    const md = window.markdownit({
+      html: true,
+      linkify: true,
+    });
+
+    function beautifyHTML() {
+      var input = document.getElementById('outputArea').value;
+      var beautifiedHTML = html_beautify(input);
+      document.getElementById('outputArea').value = beautifiedHTML;
+    }
+
+    function handleConvertClick() {
+      const inputArea = document.getElementById('inputArea');
+      const outputArea = document.getElementById('outputArea');
+
+      const inputMarkdown = inputArea.value;
+      const outputHtml = md.render(inputMarkdown);
+
+      const outputDiv = document.createElement('div');
+      outputDiv.innerHTML = outputHtml;
+
+      const outputList = document.createElement('ul');
+      outputList.id = 'dataList';
+      outputList.style.display = 'none';
+
+      Array.from(outputDiv.children).forEach((child) => {
+        if (child.nodeName === 'UL') {
+          outputList.appendChild(convertList(child));
+        }
+      });
+
+      outputArea.value = outputList.outerHTML;
+      beautifyHTML();
+    }
+
+    function convertList(ul) {
+      const newList = document.createElement('ul');
+
+      Array.from(ul.children).forEach((li) => {
+        const newLi = document.createElement('li');
+
+        let value = '';
+        Array.from(li.childNodes).forEach((child) => {
+          if (child.nodeName === '#text') {
+            value += child.nodeValue.trim();
+          } else if (child.nodeName === 'A') {
+            value += child.textContent.trim();
+            newLi.dataset.valueHtml = child.outerHTML;
+          }
+        });
+
+        newLi.dataset.value = value;
+
+        if (li.firstElementChild && li.firstElementChild.nodeName === 'UL') {
+          newLi.appendChild(convertList(li.firstElementChild));
+        }
+
+        newList.appendChild(newLi);
+      });
+
+      return newList;
+    }
+
+    const convertButton = document.getElementById('convertButton');
+    convertButton.onclick = handleConvertClick;
+  </script>
+</body>
+</html>
+
