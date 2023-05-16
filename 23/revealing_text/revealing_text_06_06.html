@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: 'Courier New', monospace;
+      color: #00FFFF;
+      background-color: black;
+    }
+    .clickable {
+      color: blue;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .non-clickable {
+      color: #00FFFF;
+      cursor: default;
+      font-weight: normal;
+    }
+  </style>
+</head>
+<body>
+  <ul id="dataList" style="display: none;">
+    <li data-value="A a">
+      <ul>
+        <li data-value="A1 long text long long long text\nfoo bar foo bar foo bar\nfoo\nfoo\nfoo\nfoo\nbar foo bar foo bar lorem ipsum bar bar foo!"></li>
+        <li data-value="A2"></li>
+      </ul>
+    </li>
+    <li data-value="B b">
+      <ul>
+        <li data-value="B 1">
+          <ul>
+            <li data-value="B1a"></li>
+            <li data-value="B1b\nB1b2" data-value-html="<a href=&quot;http://foo.com&quot;>B1b</a><br/>B1b2"></li>
+          </ul>
+        </li>
+        <li data-value="B2"></li>
+      </ul>
+    </li>
+    <li data-value="C c"></li>
+  </ul>
+
+DONE: Adaptive animation Duration . <br/>
+DONE: Totally unfolded elements are not reacting to clicks anymore (capture click and perform event.stopPropagation.<br/>
+WIP: again does not work: \n for data-value and html tags in case of data-value-html.<br/>
+User needs to supply always data-value (without html tags, eventually with \n symbol), and optionally data-value-html variant that maybe be used after animation finishes.
+<br/><br/>
+
+  <div id="displayArea"></div>
+
+  <script>
+    let idCounter = 1;
+
+    function transitionSteps(str1, str2) {
+      let steps = [str1];
+
+      // Convert the strings to arrays of characters
+      let arr1 = str1.split('');
+      let arr2 = str2.split('');
+
+      // Overwrite str1 with dots
+      for (let i = 0; i < str1.length; i++) {
+        if (i < arr1.length) {
+          arr1[i] = '.';
+        }
+        steps.push(arr1.join(''));
+      }
+
+      // Overwrite dots with str2
+      for (let i = 0; i < arr2.length; i++) {
+        arr1[i] = arr2[i];
+        steps.push(arr1.join(''));
+      }
+
+      // Replace \n with <br/> in each step
+      steps = steps.map(step => step.replace(/\\n/g, '<br/>'));
+      //console.log(steps);
+      return steps;
+    }
+
+    function animateText(element, steps, duration, callback) {
+        let i = 0;
+        const interval = duration / steps.length;
+        const animation = setInterval(() => {
+            if (i < steps.length) {
+                element.innerHTML = steps[i++];
+            } else {
+                clearInterval(animation);
+                callback();
+            }
+        }, interval);
+    }
+
+function calcDisplayDuration(text) {
+    // Apply the quadratic equation obtained from Wolfram Alpha
+    // This is the result of the query "fit {6, 1000}, {75, 3000}, {300, 6000} to a*x^2 + b*x + c"
+    // for qeuation used later:
+    // duration = a * len * len + b * len + c;
+    //
+    // Constants for the quadratic equation obtained from Wolfram Alpha
+    const a = -0.0532387;
+    const b = 33.2978;
+    const c = 802.13;
+
+    let len = text.length;
+    let duration;
+
+    // For short strings
+    if (len <= 6) {
+        duration = 1000; // 1 second
+    }
+    // Up to 300 characters
+    else if (len <= 300) {
+        duration = a * len * len + b * len + c;
+    }
+    // Up to 3000 characters
+    else if (len <= 3000) {
+        // Perform linear interpolation between 6000 and 9000 milliseconds
+        duration = 6000 + ((len - 300) / (3000 - 300)) * (9000 - 6000);
+    }
+    // More than 3000 characters
+    else {
+        // Cap the duration at 9000 milliseconds
+        duration = 9000;
+    }
+
+    return duration;
+}
+
+function recursiveDisplayList(node, target) {
+  target.textContent = '';
+  Array.from(node.children).forEach((child) => {
+    const span = document.createElement('span');
+    span.textContent = child.dataset.value + ' ';
+    span.dataset.value = child.dataset.value;
+    if (child.dataset.valueHtml) {
+      span.dataset.valueHtml = child.dataset.valueHtml;
+    }
+    if (child.firstElementChild) {
+      span.className = 'clickable';
+      span.dataset.children = Array.from(child.firstElementChild
+        .children).map(li => li.id).join(',');
+      span.onclick = function (event) {
+        event.stopPropagation();
+        if (this.className === 'clickable') {
+          const childrenIds = this.dataset.children.split(',');
+          const newValues = childrenIds
+            .map(id => document.getElementById(id))
+            .filter(el => el)
+            .map(el => el.dataset.value)
+            .join(' ');
+          const newSteps = transitionSteps(this.textContent, newValues);
+          animateText(this, newSteps, 100, () => {
+            this.innerHTML = this.dataset.valueHtml ? this.dataset.valueHtml : this.dataset.value.replace(/\\n/g, '<br/>') + ' ';
+            const tempUl = document.createElement('ul');
+            tempUl.innerHTML = this.dataset.children
+              .split(',')
+              .map(id => document.getElementById(id))
+              .filter(el => el) // Filter out null elements
+              .map(el => el.outerHTML)
+              .join('');
+            recursiveDisplayList(tempUl, this);
+          });
+        }
+      };
+    } else {
+      span.className = 'non-clickable';
+      span.onclick = function (event) {
+        // Prevent the event from bubbling up to parent elements
+        event.stopPropagation();
+      }
+    }
+    target.appendChild(span);
+  });
+}
+
+
+/*
+function recursiveDisplayList(node, target) {
+  target.textContent = '';
+  Array.from(node.children).forEach((child) => {
+    const span = document.createElement('span');
+    span.textContent = child.dataset.value + ' ';
+    span.dataset.value = child.dataset.value;
+    if (child.dataset.valueHtml) {
+      span.dataset.valueHtml = child.dataset.valueHtml;
+    }
+    if (child.firstElementChild) {
+      span.className = 'clickable';
+      span.dataset.children = Array.from(child.firstElementChild.children).map(li => li.id).join(',');
+    span.onclick = function (event) {
+      // Check if the element is clickable before running the animation
+      console.log('Clicked element class: ', this.className);
+      console.log('Clicked element children: ', this.dataset.children);
+      if (this.className === 'clickable') {
+        event.stopPropagation();
+        const childrenIds = this.dataset.children.split(',');
+        const newValues = childrenIds
+          .map(id => document.getElementById(id))
+          .filter(el => el)
+          .map(el => el.dataset.value)
+          .join(' ');
+        const newSteps = transitionSteps(this.textContent, newValues);
+        animateText(this, newSteps, 100, () => {
+          if (this.dataset.valueHtml) {
+            this.innerHTML = this.dataset.valueHtml + ' ';
+          } else {
+            this.innerHTML = this.dataset.value.replace(/\\n/g, '<br/>') + ' ';
+          }
+          const tempUl = document.createElement('ul');
+          tempUl.innerHTML = this.dataset.children
+            .split(',')
+            .map(id => document.getElementById(id))
+            .filter(el => el)
+            .map(el => el.outerHTML)
+            .join('');
+          recursiveDisplayList(tempUl, this);
+        });
+      }
+    };      
+    } else {
+      if (child.dataset.valueHtml) {
+        span.innerHTML = child.dataset.valueHtml + ' ';
+      } else {
+        span.innerHTML = child.dataset.value.replace(/\\n/g, '<br/>') + ' ';
+      }
+      span.className = 'non-clickable';
+    }
+    target.appendChild(span);
+  });
+} // end of recursiveDisplayList
+*/
+
+    function recursiveSetIds(node) {
+      Array.from(node.children).forEach((child) => {
+        child.id = `li-${idCounter++}`;
+        if (child.firstElementChild) {
+          recursiveSetIds(child.firstElementChild);
+        }
+      });
+    }
+
+    window.onload = function () {
+      const dataList = document.getElementById('dataList');
+      recursiveSetIds(dataList);
+      const displayArea = document.getElementById('displayArea');
+      recursiveDisplayList(dataList, displayArea);
+    };
+  </script>
+</body>
+</html>
+
