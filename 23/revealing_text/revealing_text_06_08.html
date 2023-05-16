@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: 'Courier New', monospace;
+      color: #00FFFF;
+      background-color: black;
+    }
+    .clickable {
+      color: blue;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .non-clickable {
+      color: #00FFFF;
+      cursor: default;
+      font-weight: normal;
+    }
+  </style>
+</head>
+<body>
+  <ul id="dataList" style="display: none;">
+    <li data-value="A a">
+      <ul>
+        <li data-value="A1 long text long long long text\nfoo bar foo bar foo bar\nfoo\nfoo\nfoo\nfoo\nbar foo bar foo bar lorem ipsum bar bar foo!"></li>
+        <li data-value="A2"></li>
+      </ul>
+    </li>
+    <li data-value="B b">
+      <ul>
+        <li data-value="B 1">
+          <ul>
+            <li data-value="B1a"></li>
+            <li data-value="B1b\nB1b2" data-value-html="<a href=&quot;http://foo.com&quot;>B1b</a><br/>B1b2"></li>
+          </ul>
+        </li>
+        <li data-value="B2"></li>
+      </ul>
+    </li>
+    <li data-value="C c"></li>
+  </ul>
+
+  DONE<br/>
+  TODO: add back again calcDisplayDuration function, calculating duration based on length of string.<br/>
+
+  <div id="displayArea"></div>
+
+  <script>
+    let idCounter = 1;
+
+    function transitionSteps(str1, str2) {
+      let steps = [str1];
+
+      // Convert the strings to arrays of characters
+      let arr1 = str1.split('');
+      let arr2 = str2.split('');
+
+      // Overwrite str1 with dots
+      for (let i = 0; i < str1.length; i++) {
+        if (i < arr1.length) {
+          arr1[i] = '.';
+        }
+        steps.push(arr1.join(''));
+      }
+
+      // Overwrite dots with str2
+      for (let i = 0; i < arr2.length; i++) {
+        arr1[i] = arr2[i];
+        steps.push(arr1.join(''));
+      }
+
+      // Replace \n with <br/> in each step
+      steps = steps.map(step => step.replace(/\\n/g, '<br/>'));
+      console.log(steps);
+      return steps;
+    }
+
+    function animateText(element, steps, duration) {
+        let i = 0;
+        const interval = duration / steps.length;
+        return new Promise((resolve) => {
+          const animation = setInterval(() => {
+              if (i < steps.length) {
+                  element.innerHTML = steps[i++];
+              } else {
+                  clearInterval(animation);
+                  resolve();
+              }
+          }, interval);
+        });
+    }
+
+    function recursiveDisplayList(node, target) {
+      target.textContent = '';
+      Array.from(node.children).forEach((child) => {
+        const span = document.createElement('span');
+        span.textContent = child.dataset.value + ' ';
+        span.dataset.value = child.dataset.value;
+        if (child.dataset.valueHtml) {
+          span.dataset.valueHtml = child.dataset.valueHtml;
+        }
+        if (child.firstElementChild) {
+          span.className = 'clickable';
+          span.dataset.children = Array.from(child.firstElementChild.children).map(li => li.id).join(',');
+          span.onclick = async function (event) {
+            if (this.className === 'non-clickable') {
+              event.stopPropagation();
+              return;  // Exit the handler early for non-clickable elements
+            }
+            event.stopPropagation();
+            const childrenIds = this.dataset.children.split(',');
+            const newValues = childrenIds
+              .map(id => document.getElementById(id))
+              .filter(el => el)
+              .map(el => el.dataset.value)
+              .join(' ');
+            const newSteps = transitionSteps(this.textContent, newValues);
+            await animateText(this, newSteps, 5000);
+            if (this.dataset.valueHtml) {
+              this.innerHTML = this.dataset.valueHtml + ' ';
+            } else {
+              this.innerHTML = this.dataset.value.replace(/\\n/g, '<br/>') + ' ';
+            }
+            const tempUl = document.createElement('ul');
+            tempUl.innerHTML = this.dataset.children
+              .split(',')
+              .map(id => document.getElementById(id))
+              .filter(el => el)
+              .map(el => el.outerHTML)
+              .join('');
+            recursiveDisplayList(tempUl, this);
+          };
+        } else { // No children branch
+          if (child.dataset.valueHtml) {
+            span.innerHTML = child.dataset.valueHtml + ' ';
+          } else {
+            span.innerHTML = child.dataset.value.replace(/\\n/g, '<br/>') + ' ';
+          }
+          span.className = 'non-clickable';
+          // change span `onclick` to not do anything
+          span.onclick = function (event) {
+            event.stopPropagation();
+          };
+        }
+        target.appendChild(span);
+      });
+    } // end of recursiveDisplayList
+
+    function recursiveSetIds(node) {
+      Array.from(node.children).forEach((child) => {
+        child.id = `li-${idCounter++}`;
+        if (child.firstElementChild) {
+          recursiveSetIds(child.firstElementChild);
+        }
+      });
+    }
+
+    window.onload = function () {
+      const dataList = document.getElementById('dataList');
+      recursiveSetIds(dataList);
+      const displayArea = document.getElementById('displayArea');
+      recursiveDisplayList(dataList, displayArea);
+    };
+  </script>
+</body>
+</html>
+

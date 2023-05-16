@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .hidden { display: none; }
+    .magical-div { 
+      padding: 10px;
+      border: 1px solid black;
+      cursor: pointer;
+      width: max-content;
+    }
+    .clickable {
+      color: blue;
+    }
+    .non-clickable {
+      color: black;
+      cursor: default;
+    }
+  </style>
+</head>
+<body>
+  <ul class="collapse-list hidden">
+    <li data-value="A a">
+      <ul>
+        <li data-value="A1"></li>
+        <li data-value="A2"></li>
+      </ul>
+    </li>
+    <li data-value="B b">
+      <ul>
+        <li data-value="B 1">
+          <ul>
+            <li data-value="B1a"></li>
+            <li data-value="B1b"></li>
+          </ul>
+        </li>
+        <li data-value="B2"></li>
+      </ul>
+    </li>
+    <li data-value="C c"></li>
+    <li data-value="."></li>
+  </ul>
+
+  <div id="magical-div" class="magical-div"></div>
+
+  <script>
+    function displayList(node, target) {
+      target.textContent = '';
+      Array.from(node.children).forEach((child) => {
+        const span = document.createElement('span');
+        span.textContent = child.dataset.value + ' ';
+        if (child.firstElementChild) {
+          span.className = 'clickable';
+          span.onclick = function (event) {
+            event.stopPropagation();
+            displayList(child.firstElementChild, this);
+          };
+        } else {
+          span.className = 'non-clickable';
+        }
+        target.appendChild(span);
+      });
+    }
+
+    window.onload = function () {
+      const ul = document.querySelector('.collapse-list');
+      const div = document.getElementById('magical-div');
+      displayList(ul, div);
+    };
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: 'Courier New', monospace;
+      color: #00FFFF;
+      background-color: black;
+    }
+    .clickable {
+      color: blue;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .non-clickable {
+      font-weight: normal;
+    }
+  </style>
+</head>
+<body>
+  <ul id="dataList" style="display: none;">
+    <li data-value="A a">
+      <ul>
+        <li data-value="A1 long text"></li>
+        <li data-value="A2"></li>
+      </ul>
+    </li>
+    <li data-value="B b">
+      <ul>
+        <li data-value="B 1">
+          <ul>
+            <li data-value="B1a"></li>
+            <li data-value="B1b\nB1b2" data-value-html="<a href=&quot;http://foo.com&quot;>B1b</a><br/>B1b2"></li>
+          </ul>
+        </li>
+        <li data-value="B2"></li>
+      </ul>
+    </li>
+    <li data-value="C c"></li>
+  </ul>
+
+WIP (almost working): WORKS: Trying to use `transitionSteps` function from `transition_steps_00.html` in animation. Also trying to fix monospace font.<br/>Does not work: data-value-html in last step and new line during animation.<br/><br/>
+
+  <div id="displayArea"></div>
+
+  <script>
+    let idCounter = 1;
+
+    function transitionSteps(str1, str2) {
+      let steps = [str1];
+
+      // Convert the strings to arrays of characters
+      let arr1 = str1.split('');
+      let arr2 = str2.split('');
+
+      // Overwrite str1 with dots
+      for (let i = 0; i < str1.length; i++) {
+        if (i < arr1.length) {
+          arr1[i] = '.';
+        }
+        steps.push(arr1.join(''));
+      }
+
+      // Overwrite dots with str2
+      for (let i = 0; i < arr2.length; i++) {
+        arr1[i] = arr2[i];
+        steps.push(arr1.join(''));
+      }
+
+      return steps;
+    }
+
+    function animateText(element, steps, interval, callback) {
+      let i = 0;
+      const animationInterval = setInterval(() => {
+        element.textContent = steps[i] + ' ';
+        i++;
+        if (i === steps.length) {
+          clearInterval(animationInterval);
+          if (callback) {
+            callback();
+          }
+        }
+      }, interval);
+    }
+
+    function recursiveDisplayList(node, target) {
+      target.textContent = '';
+      Array.from(node.children).forEach((child) => {
+        const span = document.createElement('span');
+        span.textContent = child.dataset.value + ' ';
+        span.dataset.value = child.dataset.value;
+        if (child.firstElementChild) {
+          span.className = 'clickable';
+          span.dataset.children = Array.from(child.firstElementChild
+            .children).map(li => li.id).join(',');
+          span.onclick = function (event) {
+            event.stopPropagation();
+            const childrenIds = this.dataset.children.split(',');
+            const newValues = childrenIds
+              .map(id => document.getElementById(id))
+              .filter(el => el)
+              .map(el => el.dataset.value)
+              .join(' ');
+            const newSteps = transitionSteps(this.textContent, newValues);
+            animateText(this, newSteps, 100, () => {
+              const tempUl = document.createElement('ul');
+              tempUl.innerHTML = this.dataset.children
+                .split(',')
+                .map(id => document.getElementById(id))
+                .filter(el => el) // Filter out null elements
+                .map(el => el.outerHTML)
+                .join('');
+              recursiveDisplayList(tempUl, this);
+            });
+          };
+        } else {
+          span.className = 'non-clickable';
+        }
+        target.appendChild(span);
+      });
+    }
+
+    function recursiveSetIds(node) {
+      Array.from(node.children).forEach((child) => {
+        child.id = `li-${idCounter++}`;
+        if (child.firstElementChild) {
+          recursiveSetIds(child.firstElementChild);
+        }
+      });
+    }
+
+    window.onload = function () {
+      const dataList = document.getElementById('dataList');
+      recursiveSetIds(dataList);
+      const displayArea = document.getElementById('displayArea');
+      recursiveDisplayList(dataList, displayArea);
+    };
+  </script>
+</body>
+</html>
+

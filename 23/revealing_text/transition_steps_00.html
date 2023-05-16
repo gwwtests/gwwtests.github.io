@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>String Transition</title>
+    <style>
+        body {
+            " make font same width like in terminal, like "Courier New, monospace" 
+            font-family: "Courier New", Courier, monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1>String Transition</h1>
+    <p>Enter two strings to see the transition steps:</p>
+    <input id="str1" type="text" placeholder="Enter first string" value="xyz" />
+    <input id="str2" type="text" placeholder="Enter second string" value="abcdef" />
+    <button onclick="displayTransitionSteps()">Show Transition</button>
+    <pre id="output"></pre>
+
+    <script>
+        function transitionSteps(str1, str2) {
+            let steps = [str1];
+
+            // Convert the strings to arrays of characters
+            let arr1 = str1.split('');
+            let arr2 = str2.split('');
+
+            // Overwrite str1 with dots
+            for (let i = 0; i < str1.length; i++) {
+                if (i < arr1.length) {
+                    arr1[i] = '.';
+                }
+                steps.push(arr1.join(''));
+            }
+
+            // Overwrite dots with str2
+            for (let i = 0; i < arr2.length; i++) {
+                arr1[i] = arr2[i];
+                steps.push(arr1.join(''));
+            }
+
+            return steps;
+        }
+
+        function displayTransitionSteps() {
+            let str1 = document.getElementById('str1').value;
+            let str2 = document.getElementById('str2').value;
+            let steps = transitionSteps(str1, str2);
+            let outputElement = document.getElementById('output');
+            outputElement.style.fontFamily = 'Courier New, monospace';
+            document.getElementById('output').innerText = steps.join('\n');
+        }
+
+// Make it so displayTransitionSteps() execute when hitting Enter
+  const inputElement1 = document.getElementById('str1');
+  inputElement1.addEventListener('keyup', function(event) {
+    if (event.keyCode === 13) { // 13 represents the Enter key
+      displayTransitionSteps();
+    }
+  });
+  const inputElement2 = document.getElementById('str2');
+  inputElement2.addEventListener('keyup', function(event) {
+    if (event.keyCode === 13) { // 13 represents the Enter key
+      displayTransitionSteps();
+    }
+  });
+    </script>
+</body>
+</html>
+

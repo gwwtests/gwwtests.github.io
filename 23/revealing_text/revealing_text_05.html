@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      background-color: black;
+      color: #00FFFF;
+      font-family: monospace;
+    }
+    .hidden { display: none; }
+    .magical-div { 
+      padding: 10px;
+      border: 1px solid black;
+      cursor: pointer;
+      width: max-content;
+    }
+    .clickable {
+      color: #00FFFF;
+      font-weight: bold;
+    }
+    .non-clickable {
+      color: #00FFFF;
+      font-weight: normal;
+      cursor: default;
+    }
+  </style>
+</head>
+<body>
+  <ul class="collapse-list hidden">
+    <li data-value="A a">
+      <ul>
+        <li data-value="A1 long text"></li>
+        <li data-value="A2"></li>
+      </ul>
+    </li>
+    <li data-value="B b">
+      <ul>
+        <li data-value="B 1">
+          <ul>
+            <li data-value="B1a"></li>
+            <li data-value="<a href=&quot;http://foo.com&quot;>B1b</a><br/>B1b2"></li>
+          </ul>
+        </li>
+        <li data-value="B2"></li>
+      </ul>
+    </li>
+    <li data-value="C c"></li>
+    <li data-value="."></li>
+  </ul>
+
+  <div id="magical-div" class="magical-div"></div>
+
+WIP I am not sure what it tried to achieve with change in this file.
+
+  <script>
+    function animateText(target, text, speed, callback) {
+      let i = 0;
+      function go() {
+        if (i < text.length) {
+          target.innerHTML += text.charAt(i++);
+          setTimeout(go, speed);
+        } else if (callback) {
+          callback();
+        }
+      }
+      go();
+    }
+
+    function replaceTextWithDots(target, callback) {
+      let text = target.textContent;
+      target.textContent = '';
+      animateText(target, '.'.repeat(text.length), 50, () => {
+        target.innerHTML = '';
+        callback();
+      });
+    }
+
+    function displayList(node, target) {
+      target.textContent = '';
+      Array.from(node.children).forEach((child) => {
+        const span = document.createElement('span');
+        span.innerHTML = child.dataset.value + ' ';
+        span.dataset.value = child.dataset.value;
+        if (child.firstElementChild) {
+          span.className = 'clickable';
+          span.dataset.children = child.firstElementChild.innerHTML;
+          span.onclick = function (event) {
+            event.stopPropagation();
+            replaceTextWithDots(this, () => {
+              this.textContent = '';
+              const tempUl = document.createElement('ul');
+              tempUl.innerHTML = this.dataset.children;
+              displayList(tempUl, this);
+            });
+          };
+        } else {
+          span.className = 'non-clickable';
+        }
+        target.appendChild(span);
+      });
+    }
+
+    function recursiveDisplayList(node, target) {
+      Array.from(node.children).forEach((child) => {
+        const span = document.createElement('span');
+        span.innerHTML = child.dataset.value + ' ';
+        span.dataset.value = child.dataset.value;
+        if (child.firstElementChild) {
+          span.className = 'clickable';
+          span.dataset.children = child.firstElementChild.innerHTML;
+          span.onclick = function (event) {
+            event.stopPropagation();
+            replaceTextWithDots(this, () => {
+              this.textContent = '';
+              const tempUl = document.createElement('ul');
+              tempUl.innerHTML = this.dataset.children;
+              displayList(tempUl, this);
+            });
+          };
+        } else {
+          span.className = 'non-clickable';
+        }
+        target.appendChild(span);
+      });
+    }
+
+    window.onload = function () {
+      const ul = document.querySelector('.collapse-list');
+      const div = document.getElementById('magical-div');
+      recursiveDisplayList(ul, div);
+    };
+  </script>
+</body>
+</html>
+
