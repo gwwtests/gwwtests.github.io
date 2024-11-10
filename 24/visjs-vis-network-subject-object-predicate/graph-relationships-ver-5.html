@@ -172,9 +172,9 @@
         const bulkInput = document.getElementById('bulk-input');
         let isMultilineMode = true;
 
-        function toggleInputMode(mode = null) {
-            if (mode !== null) {
-                isMultilineMode = mode;
+        function toggleInputMode(block_mode = null) {
+            if (block_mode !== null) {
+                isMultilineMode = block_mode;
             } else {
                 isMultilineMode = !isMultilineMode;
             }
@@ -183,7 +183,8 @@
             modeToggle.textContent = isMultilineMode ? 'Single' : 'Multi';
         }
 
-        modeToggle.addEventListener('click', toggleInputMode);
+        modeToggle.addEventListener('click', () => toggleInputMode());
+        toggleInputMode(true);
 
         // Modal elements
         const modal = document.getElementById('delete-modal');
