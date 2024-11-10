@@ -172,12 +172,18 @@
         const bulkInput = document.getElementById('bulk-input');
         let isMultilineMode = true;
 
-        modeToggle.addEventListener('click', () => {
-            isMultilineMode = !isMultilineMode;
+        function toggleInputMode(mode = null) {
+            if (mode !== null) {
+                isMultilineMode = mode;
+            } else {
+                isMultilineMode = !isMultilineMode;
+            }
             singleInput.style.display = isMultilineMode ? 'none' : 'block';
             bulkInput.style.display = isMultilineMode ? 'block' : 'none';
             modeToggle.textContent = isMultilineMode ? 'Single' : 'Multi';
-        });
+        }
+
+        modeToggle.addEventListener('click', toggleInputMode);
 
         // Modal elements
         const modal = document.getElementById('delete-modal');
