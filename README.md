@@ -12,4 +12,4 @@ Repo: <https://github.com/gwwtests/gwwtests.github.io/>
 * 2023-04-10 [Interactive Transcription with Whisper.Cpp + HTML+JS+CSS](23/stt/test04_punct.html)
 * 2023-05-14 [Playing with interactive graph visualisation with js.cytoscape.org](23/js.cytoscape.org/)
 * 2023-05-16 [Script revealing parts of text when clicked](23/revealing_text/revealing_text_09_longer_text.html)
-* 2024 [Interactive Graph Visualizer, Builder, Editor for "subject predicate object" sentences](24/visjs-vis-network-subject-object-predicate/graph-relationships-ver-5.html)
+* 2024 [Interactive Graph Visualizer, Builder, Editor for "subject predicate object" sentences](24/visjs-vis-network-subject-object-predicate/graph-relationships-ver-5-mod.html)
